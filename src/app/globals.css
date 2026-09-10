@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-space-grotesk: "Space Grotesk", system-ui, sans-serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+  --color-background: #FFFFFF;
+  --color-surface: #F5F0E6;
+  --color-surface-soft: #EEE8DC;
+  --color-text-primary: #111111;
+  --color-text-secondary: #5F5F5F;
+  --color-text-muted: #858585;
+  --color-primary: #111111;
+  --color-primary-hover: #2B2B2B;
+  --color-green: #2F6B42;
+  --color-green-light: #F0FFDF;
+  --color-border: #E5E5E3;
+  --color-error: #D64545;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-space-grotesk);
+  letter-spacing: -0.03em;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.section-py {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+@screen md {
+  .section-py {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
+.container-x {
+  max-width: 1360px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@screen md {
+  .container-x {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.text-gradient-teal-gold {
+  background-image: linear-gradient(115deg, var(--color-green) 0%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-gold-light {
+  background-image: linear-gradient(115deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grain-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
