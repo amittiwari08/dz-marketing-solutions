@@ -24,7 +24,7 @@ const navItems = [
   },
 ];
 
-export default function Header() {
+function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -42,27 +42,17 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/95 backdrop-blur-xl">
-
-      {/* =====================================================
-          MAIN NAVBAR
-      ===================================================== */}
-
+      {/* Main Navbar */}
       <div className="mx-auto flex h-[68px] w-full max-w-7xl items-center justify-between px-4 sm:h-[76px] sm:px-6 lg:px-10">
-
-        {/* ===================================================
-            BRAND
-        =================================================== */}
-
+        {/* Brand */}
         <Link
           href="/"
           onClick={closeMenu}
           aria-label="DZ MARKETING SOLUTIONS PVT. LTD."
           className="group flex min-w-0 shrink-0 items-center"
         >
-
           <div className="flex items-center gap-2.5 sm:gap-3">
-
-            {/* Existing logo */}
+            {/* Logo with white background */}
             <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 group-hover:ring-red-200 sm:h-12 sm:w-12">
               <img
                 src="/images/brand/dz-logo.png"
@@ -71,32 +61,20 @@ export default function Header() {
               />
             </div>
 
-            {/* Company name */}
+            {/* Company Name */}
             <div className="min-w-0">
-
               <div className="whitespace-nowrap text-[13px] font-extrabold leading-none tracking-tight text-gray-950 min-[390px]:text-[14px] sm:text-[16px]">
                 DZ MARKETING SOLUTIONS
               </div>
-
-              <div className="mt-1 whitespace-nowrap text-[8px] font-bold leading-none tracking-[0.18em] text-red-600 min-[390px]:text-[9px] sm:text-[10px]">
-                VENTURES
-              </div>
-
             </div>
-
           </div>
-
         </Link>
 
-        {/* ===================================================
-            DESKTOP NAV
-        =================================================== */}
-
+        {/* Desktop Navigation */}
         <nav
           aria-label="Main navigation"
           className="hidden items-center gap-1 lg:flex"
         >
-
           {navItems.map((item) => {
             const active = isActive(item.href);
 
@@ -104,10 +82,11 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative rounded-full px-4 py-2.5 text-sm transition-all duration-300 ${active
+                className={`relative rounded-full px-4 py-2.5 text-sm transition-all duration-300 ${
+                  active
                     ? "bg-red-50 font-semibold text-red-600"
                     : "font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-950"
-                  }`}
+                }`}
               >
                 {item.label}
 
@@ -117,28 +96,19 @@ export default function Header() {
               </Link>
             );
           })}
-
         </nav>
 
-        {/* ===================================================
-            DESKTOP CTA
-        =================================================== */}
-
+        {/* Desktop CTA */}
         <Link
           href="/contact"
           className="group hidden min-h-11 items-center gap-2 rounded-full bg-gray-950 px-6 py-3 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:bg-red-600 hover:shadow-lg hover:shadow-red-600/10 lg:inline-flex"
         >
           Let&apos;s Talk
 
-          <ArrowRight
-            className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-          />
+          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
 
-        {/* ===================================================
-            MOBILE MENU BUTTON
-        =================================================== */}
-
+        {/* Mobile Menu Button */}
         <button
           type="button"
           onClick={() => setMobileOpen((value) => !value)}
@@ -152,27 +122,18 @@ export default function Header() {
             <Menu className="h-5 w-5" />
           )}
         </button>
-
       </div>
 
-      {/* =====================================================
-          MOBILE MENU
-      ===================================================== */}
-
+      {/* Mobile Menu */}
       <div
-        className={`overflow-hidden border-t border-gray-100 bg-white transition-all duration-300 lg:hidden ${mobileOpen
+        className={`overflow-hidden border-t border-gray-100 bg-white transition-all duration-300 lg:hidden ${
+          mobileOpen
             ? "max-h-[500px] opacity-100"
             : "max-h-0 opacity-0"
-          }`}
+        }`}
       >
-
         <div className="mx-auto w-full max-w-7xl px-4 pb-5 pt-3 sm:px-6">
-
-          <nav
-            aria-label="Mobile navigation"
-            className="space-y-1"
-          >
-
+          <nav aria-label="Mobile navigation" className="space-y-1">
             {navItems.map((item) => {
               const active = isActive(item.href);
 
@@ -181,33 +142,26 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={closeMenu}
-                  className={`flex min-h-12 items-center justify-between rounded-xl px-4 py-3 transition-all duration-200 ${active
+                  className={`flex min-h-12 items-center justify-between rounded-xl px-4 py-3 transition-all duration-200 ${
+                    active
                       ? "bg-red-50 font-bold text-red-600"
                       : "font-semibold text-gray-700 hover:bg-gray-50 hover:text-gray-950"
-                    }`}
+                  }`}
                 >
-
-                  <span className="text-sm">
-                    {item.label}
-                  </span>
+                  <span className="text-sm">{item.label}</span>
 
                   <ArrowRight
-                    className={`h-4 w-4 ${active
-                        ? "text-red-600"
-                        : "text-gray-300"
-                      }`}
+                    className={`h-4 w-4 ${
+                      active ? "text-red-600" : "text-gray-300"
+                    }`}
                   />
-
                 </Link>
               );
             })}
-
           </nav>
 
           {/* Mobile CTA */}
-
           <div className="mt-4 border-t border-gray-100 pt-4">
-
             <Link
               href="/contact"
               onClick={closeMenu}
@@ -215,17 +169,23 @@ export default function Header() {
             >
               Let&apos;s Talk
 
-              <ArrowRight
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-              />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
-
           </div>
-
         </div>
-
       </div>
-
     </header>
   );
 }
+
+/*
+  Both exports are included intentionally.
+
+  This works:
+  import { Header } from "@/components/layout/Header";
+
+  And this also works:
+  import Header from "@/components/layout/Header";
+*/
+export { Header };
+export default Header;
