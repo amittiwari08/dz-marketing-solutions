@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle2,
@@ -122,7 +122,7 @@ const differences = [
   },
 ];
 
-const astrivionWay = [
+const dzWay = [
   {
     number: "01",
     title: "One Person to Talk to",
@@ -197,40 +197,30 @@ function ValueCard({
 export default function AboutUsPage() {
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-[#f7f7f5] text-[#111318]">
-
       {/* =====================================================
           HERO
       ===================================================== */}
 
       <section className="relative overflow-hidden border-b border-black/5 bg-[#f7f7f5]">
-
         <div className="mx-auto grid min-h-[560px] w-full max-w-7xl items-center gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1fr_0.9fr] lg:gap-16 lg:px-10 lg:py-24">
-
           {/* HERO CONTENT */}
-          <div className="order-2 lg:order-1">
 
+          <div className="order-2 lg:order-1">
             <SectionLabel>
               About DZ MARKETING SOLUTIONS PVT. LTD.
             </SectionLabel>
 
             <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.03] tracking-tight text-[#111318] sm:text-5xl md:text-6xl lg:text-7xl">
-
               About DZ MARKETING SOLUTIONS PVT. LTD.
 
               <span className="block text-red-600">
                 Where Ideas Meet Impact
               </span>
-
             </h1>
 
             <h2 className="mt-6 text-lg font-bold leading-7 text-gray-800 sm:text-xl lg:text-2xl">
-
               You dream about it. We build it,
-
-              <span className="text-red-600">
-                {" "}TOGETHER
-              </span>
-
+              <span className="text-red-600"> TOGETHER</span>
             </h2>
 
             <p className="mt-5 max-w-xl text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
@@ -240,12 +230,11 @@ export default function AboutUsPage() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 min-[420px]:flex-row">
-
               <Link
                 href="/contact"
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-red-600 px-6 py-3 text-xs font-bold text-white shadow-lg shadow-red-600/15 transition duration-300 hover:bg-red-700 sm:text-sm"
               >
-                Let&apos;s Talk
+                Let's Talk
                 <ArrowRight className="h-4 w-4" />
               </Link>
 
@@ -256,26 +245,20 @@ export default function AboutUsPage() {
                 Explore Services
                 <ArrowRight className="h-4 w-4" />
               </Link>
-
             </div>
-
           </div>
 
           {/* HERO IMAGE */}
+
           <div className="order-1 lg:order-2">
-
             <div className="relative mx-auto w-full max-w-[560px] overflow-hidden rounded-[24px] border border-gray-200 bg-white p-2 shadow-xl shadow-gray-200/60 sm:rounded-[30px] sm:p-3">
-
               <img
                 src="/images/service-06.png"
                 alt="DZ MARKETING SOLUTIONS PVT. LTD. technology team"
                 className="h-[280px] w-full rounded-[18px] object-cover sm:h-[360px] sm:rounded-[22px] md:h-[400px] lg:h-[430px]"
               />
-
             </div>
-
           </div>
-
         </div>
       </section>
 
@@ -284,28 +267,23 @@ export default function AboutUsPage() {
       ===================================================== */}
 
       <section className="bg-white py-16 sm:py-20 lg:py-24">
-
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
-
           {/* IMAGE */}
+
           <div className="order-2 lg:order-1">
-
             <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-[#f7f7f5] p-2 shadow-sm sm:rounded-[28px] sm:p-3">
-
               <img
                 src="/images/service-07.png"
                 alt="DZ MARKETING SOLUTIONS PVT. LTD. team working with ERP technology"
                 loading="lazy"
                 className="h-[280px] w-full rounded-[18px] object-cover sm:h-[360px] sm:rounded-[22px] lg:h-[430px]"
               />
-
             </div>
-
           </div>
 
           {/* CONTENT */}
-          <div className="order-1 lg:order-2">
 
+          <div className="order-1 lg:order-2">
             <SectionLabel>
               Welcome to DZ MARKETING SOLUTIONS PVT. LTD.
             </SectionLabel>
@@ -315,35 +293,31 @@ export default function AboutUsPage() {
             </h2>
 
             <div className="mt-6 space-y-5 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
-
               <p>
-                We&apos;re DZ MARKETING SOLUTIONS PVT. LTD. – a team that believes technology
-                should make life easier, not harder. Do you have ideas you want
-                to turn into real action? We&apos;re here for you whether you
-                are a small business or a large enterprise. Turn your vision
-                into tools that work.
+                We're DZ MARKETING SOLUTIONS PVT. LTD. – a team that believes
+                technology should make life easier, not harder. Do you have
+                ideas you want to turn into real action? We're here for you
+                whether you are a small business or a large enterprise. Turn
+                your vision into tools that work.
               </p>
 
               <p>
-                We don&apos;t just build tech; we build trust, connection, and
+                We don't just build tech; we build trust, connection, and
                 solutions that feel like they were made just for you. Whether
-                it&apos;s a mobile app that feels just right, a travel platform
-                that books trips in a snap, or a system to keep your business
+                it's a mobile app that feels just right, a travel platform that
+                books trips in a snap, or a system to keep your business
                 running smoothly, we shall make it happen.
               </p>
 
               <p>
                 We started with a simple idea: technology should serve people,
                 not the other way around. Every line of code we write, every
-                design we create, every late-night support call we answer—it&apos;s
+                design we create, every late-night support call we answer – it's
                 all about helping you succeed. Your dream is our mission, and
-                we&apos;re here to carry it forward with heart and hustle.
+                we're here to carry it forward with heart and hustle.
               </p>
-
             </div>
-
           </div>
-
         </div>
       </section>
 
@@ -352,31 +326,21 @@ export default function AboutUsPage() {
       ===================================================== */}
 
       <section className="bg-[#f7f7f5] py-16 sm:py-20 lg:py-24">
-
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10">
-
           <div className="mx-auto max-w-3xl text-center">
-
-            <SectionLabel>
-              What Drives Us
-            </SectionLabel>
+            <SectionLabel>What Drives Us</SectionLabel>
 
             <h2 className="text-3xl font-extrabold tracking-tight text-[#111318] sm:text-4xl lg:text-5xl">
-
               Real Problems.
-
-              <span className="text-red-600">
-                {" "}Real Solutions.
-              </span>
-
+              <span className="text-red-600"> Real Solutions.</span>
             </h2>
 
             <p className="mt-5 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
-              We&apos;re not here to chase trends or throw around fancy terms.
-              We&apos;re here to solve real-world problems– Your Problems. Maybe
-              your business is growing faster than you can keep up, or you&apos;re
-              losing hours to repetitive tasks. Maybe you&apos;ve got a big idea
-              but don&apos;t know where to start. That&apos;s where we come in.
+              We're not here to chase trends or throw around fancy terms.
+              We're here to solve real-world problems – Your Problems. Maybe
+              your business is growing faster than you can keep up, or you're
+              losing hours to repetitive tasks. Maybe you've got a big idea
+              but don't know where to start. That's where we come in.
             </p>
 
             <p className="mt-4 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
@@ -384,12 +348,11 @@ export default function AboutUsPage() {
               customers happier, and your goals closer. We pour everything into
               that. Because if you win, we feel it too.
             </p>
-
           </div>
 
           {/* VALUE CARDS */}
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
 
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
             {values.map((value) => (
               <ValueCard
                 key={value.title}
@@ -398,9 +361,7 @@ export default function AboutUsPage() {
                 description={value.description}
               />
             ))}
-
           </div>
-
         </div>
       </section>
 
@@ -409,35 +370,24 @@ export default function AboutUsPage() {
       ===================================================== */}
 
       <section className="bg-white py-16 sm:py-20 lg:py-24">
-
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10">
-
           <div className="mx-auto max-w-3xl text-center">
-
-            <SectionLabel>
-              What We Do For You
-            </SectionLabel>
+            <SectionLabel>What We Do For You</SectionLabel>
 
             <h2 className="text-3xl font-extrabold tracking-tight text-[#111318] sm:text-4xl lg:text-5xl">
-
               Technology Built Around
-
-              <span className="text-red-600">
-                {" "}Your Business
-              </span>
-
+              <span className="text-red-600"> Your Business</span>
             </h2>
 
             <p className="mt-5 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
               From everyday IT management to advanced AI and cloud solutions,
               we create technology that solves real business challenges.
             </p>
-
           </div>
 
-          {/* SERVICES */}
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
+          {/* SERVICE CARDS */}
 
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
             {services.map((service, index) => {
               const Icon = service.icon;
 
@@ -446,9 +396,7 @@ export default function AboutUsPage() {
                   key={service.title}
                   className="group relative rounded-[20px] border border-gray-200 bg-[#f7f7f5] p-5 transition duration-300 hover:-translate-y-1 hover:border-red-200 hover:bg-white hover:shadow-lg sm:p-6"
                 >
-
                   <div className="flex items-center justify-between">
-
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-red-600 shadow-sm transition duration-300 group-hover:bg-red-600 group-hover:text-white">
                       <Icon className="h-5 w-5" />
                     </div>
@@ -456,7 +404,6 @@ export default function AboutUsPage() {
                     <span className="text-xs font-bold text-gray-300">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-
                   </div>
 
                   <h3 className="mt-5 text-sm font-bold leading-5 text-gray-900 sm:text-base">
@@ -466,13 +413,10 @@ export default function AboutUsPage() {
                   <p className="mt-3 text-xs leading-6 text-gray-500 sm:text-sm sm:leading-7">
                     {service.description}
                   </p>
-
                 </div>
               );
             })}
-
           </div>
-
         </div>
       </section>
 
@@ -481,28 +425,17 @@ export default function AboutUsPage() {
       ===================================================== */}
 
       <section className="bg-[#f7f7f5] py-16 sm:py-20 lg:py-24">
-
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-10">
-
           {/* CONTENT */}
-          <div>
 
-            <SectionLabel>
-              Why We&apos;re Different
-            </SectionLabel>
+          <div>
+            <SectionLabel>Why We're Different</SectionLabel>
 
             <h2 className="text-3xl font-extrabold tracking-tight text-[#111318] sm:text-4xl lg:text-5xl">
-
               We Build
-
-              <span className="text-red-600">
-                {" "}With You,
-              </span>
-
+              <span className="text-red-600"> With You,</span>
               <br />
-
               Not Just For You.
-
             </h2>
 
             <p className="mt-5 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
@@ -510,24 +443,22 @@ export default function AboutUsPage() {
               your story as much as you do. We do not just hand you a product
               and walk away; we listen, and we ask questions. We dig into what
               makes your business tick to build it into something that feels
-              like it&apos;s yours, because it is.
+              like it's yours, because it is.
             </p>
 
             {/* DIFFERENCES */}
-            <div className="mt-8 space-y-4">
 
+            <div className="mt-8 space-y-4">
               {differences.map((item) => (
                 <div
                   key={item.number}
                   className="flex gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5"
                 >
-
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-50 text-xs font-bold text-red-600">
                     {item.number}
                   </div>
 
                   <div>
-
                     <h3 className="text-sm font-bold text-gray-900 sm:text-base">
                       {item.title}
                     </h3>
@@ -535,32 +466,24 @@ export default function AboutUsPage() {
                     <p className="mt-1.5 text-xs leading-6 text-gray-500 sm:text-sm sm:leading-7">
                       {item.description}
                     </p>
-
                   </div>
-
                 </div>
               ))}
-
             </div>
-
           </div>
 
           {/* IMAGE */}
+
           <div>
-
             <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-white p-2 shadow-lg sm:rounded-[30px] sm:p-3">
-
               <img
                 src="/images/service-05.png"
                 alt="Technology and digital business solutions"
                 loading="lazy"
                 className="h-[340px] w-full rounded-[18px] object-cover sm:h-[470px] sm:rounded-[24px] lg:h-[560px]"
               />
-
             </div>
-
           </div>
-
         </div>
       </section>
 
@@ -569,58 +492,46 @@ export default function AboutUsPage() {
       ===================================================== */}
 
       <section className="bg-white py-16 sm:py-20 lg:py-24">
-
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
-
           {/* IMAGE */}
+
           <div className="order-2 lg:order-1">
-
             <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-[#f7f7f5] p-2 shadow-sm sm:rounded-[30px] sm:p-3">
-
               <img
                 src="/images/service-03.png"
                 alt="DZ MARKETING SOLUTIONS PVT. LTD. technology team"
                 loading="lazy"
                 className="h-[320px] w-full rounded-[18px] object-cover sm:h-[450px] sm:rounded-[24px] lg:h-[520px]"
               />
-
             </div>
-
           </div>
 
           {/* CONTENT */}
-          <div className="order-1 lg:order-2">
 
+          <div className="order-1 lg:order-2">
             <SectionLabel>
               The DZ MARKETING SOLUTIONS PVT. LTD. Way
             </SectionLabel>
 
             <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-[#111318] sm:text-4xl lg:text-5xl">
-
               Thrive In Everything You Choose-
-
               <span className="block text-red-600">
                 The DZ MARKETING SOLUTIONS PVT. LTD. Way
               </span>
-
             </h2>
 
             <div className="mt-8 space-y-4">
-
-              {astrivionWay.map((item) => (
+              {dzWay.map((item) => (
                 <div
                   key={item.number}
                   className="group rounded-[20px] border border-gray-200 bg-[#f7f7f5] p-5 transition duration-300 hover:border-red-200 hover:bg-white hover:shadow-md sm:p-6"
                 >
-
                   <div className="flex gap-4">
-
                     <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-xs font-bold text-red-600 shadow-sm group-hover:bg-red-600 group-hover:text-white">
                       {item.number}
                     </div>
 
                     <div>
-
                       <h3 className="text-sm font-bold text-gray-900 sm:text-base">
                         {item.title}
                       </h3>
@@ -628,18 +539,12 @@ export default function AboutUsPage() {
                       <p className="mt-2 text-xs leading-6 text-gray-500 sm:text-sm sm:leading-7">
                         {item.description}
                       </p>
-
                     </div>
-
                   </div>
-
                 </div>
               ))}
-
             </div>
-
           </div>
-
         </div>
       </section>
 
@@ -648,40 +553,32 @@ export default function AboutUsPage() {
       ===================================================== */}
 
       <section className="bg-[#f7f7f5] px-5 py-14 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-
         <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[24px] border border-red-100 bg-white shadow-sm sm:rounded-[30px]">
+          {/* DECORATIVE GLOW */}
 
-          {/* Decorative glow */}
           <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-red-100 blur-[110px]" />
 
           <div className="relative px-5 py-12 text-center sm:px-10 sm:py-16 lg:px-16 lg:py-20">
-
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-red-600">
               <MessageCircle className="h-6 w-6" />
             </div>
 
             <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-extrabold tracking-tight text-[#111318] sm:text-4xl lg:text-5xl">
-
               Your Dream.
-
-              <span className="text-red-600">
-                {" "}Our Mission.
-              </span>
-
+              <span className="text-red-600"> Our Mission.</span>
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600">
-              Let&apos;s turn your ideas into technology that makes a real
-              difference. We&apos;re ready when you are.
+              Let's turn your ideas into technology that makes a real
+              difference. We're ready when you are.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 min-[420px]:flex-row">
-
               <Link
                 href="/contact"
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-red-600 px-6 py-3 text-xs font-bold text-white transition duration-300 hover:bg-red-700 sm:text-sm"
               >
-                Let&apos;s Talk
+                Let's Talk
                 <ArrowRight className="h-4 w-4" />
               </Link>
 
@@ -692,14 +589,10 @@ export default function AboutUsPage() {
                 Explore Services
                 <ArrowRight className="h-4 w-4" />
               </Link>
-
             </div>
-
           </div>
-
         </div>
       </section>
-
     </main>
   );
 }
