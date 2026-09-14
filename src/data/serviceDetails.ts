@@ -1,4 +1,4 @@
-export type ServiceDetail = {
+﻿export type ServiceDetail = {
     slug: string;
     heroTitle: string;
     heroSubtitle: string;
@@ -35,7 +35,7 @@ export type ServiceDetail = {
 
 export const serviceDetails: Record<string, ServiceDetail> = {
     /* ================================================================
-       01 — IT TECHNICAL MANAGEMENT
+       01 â€” IT TECHNICAL MANAGEMENT
     ================================================================= */
 
     "it-technical-management": {
@@ -44,16 +44,16 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         heroTitle: "Keep Your IT Systems Running Without Stress",
 
         heroSubtitle:
-            "Reliable IT Technical Management from DZ MARKETING SOLUTIONS PVT. LTD.",
+            "Reliable IT Technical Management from DZ MARKETING SOLUTIONS",
 
         heroDescription:
             "Your IT systems empower your business and when they fail, work stops. We monitor, maintain, and optimize your computers, networks, and servers, so you can focus on growth.",
 
         whyTitle:
-            "Why Choose DZ MARKETING SOLUTIONS PVT. LTD. for IT Technical Management?",
+            "Why Choose DZ MARKETING SOLUTIONS for IT Technical Management?",
 
         whyDescription:
-            "Your IT systems empower your business and when they fail, work stops. We monitor, maintain, and optimize your computers, networks, and servers, so you can focus on growth. Our services are tailored for everyone–from startups to enterprises to keep your systems reliable and secure.",
+            "Your IT systems empower your business and when they fail, work stops. We monitor, maintain, and optimize your computers, networks, and servers, so you can focus on growth. Our services are tailored for everyoneâ€“from startups to enterprises to keep your systems reliable and secure.",
 
         benefits: [
             {
@@ -88,7 +88,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
                 number: "01",
                 title: "We Assess Your Current Setup",
                 description:
-                    "Before we touch anything, we dive into your current setup. We assess what’s working, what’s not working, and what’s holding your team back. Then we map your systems, listen to your team, and design a hands-on technical management plan that supports how you work.",
+                    "Before we touch anything, we dive into your current setup. We assess whatâ€™s working, whatâ€™s not working, and whatâ€™s holding your team back. Then we map your systems, listen to your team, and design a hands-on technical management plan that supports how you work.",
             },
             {
                 number: "02",
@@ -100,7 +100,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
                 number: "03",
                 title: "We Keep Everything Running",
                 description:
-                    "We stay in the background and quietly take care of system health, security patches, performance monitoring, and updates. So, you’ll never have to guess who to call if something breaks as we’ll be already on it.",
+                    "We stay in the background and quietly take care of system health, security patches, performance monitoring, and updates. So, youâ€™ll never have to guess who to call if something breaks as weâ€™ll be already on it.",
             },
             {
                 number: "04",
@@ -130,7 +130,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         closingTitle: "Take Tech Off Your Plate",
 
         closingDescription:
-            "Tech isn’t your full-time job, but it’s ours. Let’s make sure your systems stop being a headache and start being a real strength.",
+            "Tech isnâ€™t your full-time job, but itâ€™s ours. Letâ€™s make sure your systems stop being a headache and start being a real strength.",
 
         faqs: [
             {
@@ -167,7 +167,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     },
 
     /* ================================================================
-       02 — DIGITAL MARKETING
+       02 â€” DIGITAL MARKETING
     ================================================================= */
 
     "digital-marketing": {
@@ -176,12 +176,12 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         heroTitle: "Grow Your Business With Smarter Digital Marketing",
 
         heroSubtitle:
-            "Data-driven digital marketing solutions from DZ MARKETING SOLUTIONS PVT. LTD.",
+            "Data-driven digital marketing solutions from DZ MARKETING SOLUTIONS",
 
         heroDescription:
             "We create focused digital marketing strategies that connect your business with the right audience, strengthen your online presence, and turn attention into measurable growth.",
 
-        whyTitle: "Why Choose DZ MARKETING SOLUTIONS PVT. LTD. for Digital Marketing?",
+        whyTitle: "Why Choose DZ MARKETING SOLUTIONS for Digital Marketing?",
 
         whyDescription:
             "Your customers are online. We help your business reach them with the right message, on the right platform, at the right time.",
@@ -294,10 +294,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     "it-consulting": {
         slug: "it-consulting",
         heroTitle: "Technology Consulting Built Around Your Business",
-        heroSubtitle: "Practical IT consulting from DZ MARKETING SOLUTIONS PVT. LTD.",
+        heroSubtitle: "Practical IT consulting from DZ MARKETING SOLUTIONS",
         heroDescription:
             "Make better technology decisions with expert guidance designed around your business goals, technical environment, and future growth.",
-        whyTitle: "Why Choose DZ MARKETING SOLUTIONS PVT. LTD. for IT Consulting?",
+        whyTitle: "Why Choose DZ MARKETING SOLUTIONS for IT Consulting?",
         whyDescription:
             "We help businesses understand their technology challenges, identify opportunities, and create practical roadmaps for improvement.",
         benefits: [
@@ -391,10 +391,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     "cloud-applications": {
         slug: "cloud-applications",
         heroTitle: "Build Scalable Cloud Applications",
-        heroSubtitle: "Modern cloud solutions from DZ MARKETING SOLUTIONS PVT. LTD.",
+        heroSubtitle: "Modern cloud solutions from DZ MARKETING SOLUTIONS",
         heroDescription:
             "Create secure, scalable, and reliable cloud applications designed to support modern business operations.",
-        whyTitle: "Why Choose DZ MARKETING SOLUTIONS PVT. LTD. for Cloud Applications?",
+        whyTitle: "Why Choose DZ MARKETING SOLUTIONS for Cloud Applications?",
         whyDescription:
             "We help businesses modernize applications and infrastructure using scalable cloud technologies.",
         benefits: [
@@ -489,11 +489,11 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         slug: "application-development",
         heroTitle: "Build Software That Actually Solves Problems",
         heroSubtitle:
-            "Custom IT application development from DZ MARKETING SOLUTIONS PVT. LTD.",
+            "Custom IT application development from DZ MARKETING SOLUTIONS",
         heroDescription:
             "We design and build applications tailored to your business goals, whether you need a tool for your team, a system for your customers, or a better way to manage your data.",
         whyTitle:
-            "Why Choose DZ MARKETING SOLUTIONS PVT. LTD. for IT Application Development?",
+            "Why Choose DZ MARKETING SOLUTIONS for IT Application Development?",
         whyDescription:
             "We build custom web, mobile, and cloud applications designed to streamline work and support business growth.",
         benefits: [

@@ -1,4 +1,4 @@
-export type ServiceDetail = {
+﻿export type ServiceDetail = {
   id: string;
   route: string;
   number: string;
@@ -24,7 +24,7 @@ export type ServiceDetail = {
     description: string;
     points: string[];
   };
-  whyAstrivion: {
+  whyDZ: {
     title: string;
     description: string;
     points: Array<{ title: string; text: string }>;
@@ -89,7 +89,7 @@ export const servicesData: ServiceDetail[] = [
         "Lack of centralized monitoring and proactive incident management",
       ],
     },
-    whyAstrivion: {
+    whyDZ: {
       title: "Why Choose DZ MARKETING SOLUTIONS for Technical Management",
       description:
         "We act as your dedicated IT operational backbone. We combine proactive monitoring with rapid response workflows to keep your hardware, networks, and cloud environments performing seamlessly.",
@@ -240,7 +240,7 @@ export const servicesData: ServiceDetail[] = [
         "Lack of clear technical leadership during digital transformation initiatives",
       ],
     },
-    whyAstrivion: {
+    whyDZ: {
       title: "Why Partner with DZ MARKETING SOLUTIONS for IT Consulting",
       description:
         "We provide vendor-neutral, practical guidance grounded in engineering reality. We bridge the gap between executive business vision and technical execution.",
@@ -391,10 +391,10 @@ export const servicesData: ServiceDetail[] = [
         "Security compliance gaps in cloud resource permissions and network policies",
       ],
     },
-    whyAstrivion: {
+    whyDZ: {
       title: "Why Choose DZ MARKETING SOLUTIONS for Cloud Applications",
       description:
-        "We build cloud software using modern cloud-native patterns — Infrastructure as Code (IaC), containerization, and automated CI/CD pipelines for maximum elasticity.",
+        "We build cloud software using modern cloud-native patterns â€” Infrastructure as Code (IaC), containerization, and automated CI/CD pipelines for maximum elasticity.",
       points: [
         {
           title: "Infrastructure as Code (IaC)",
@@ -512,7 +512,7 @@ export const servicesData: ServiceDetail[] = [
       "Custom web, mobile, and desktop applications engineered for high performance, long-term maintainability, and clean UX.",
     heroTitle: "Custom Software Solutions Built For Performance And Scale.",
     heroSubtitle:
-      "End-to-end full-stack software development — from modern web platforms and APIs to custom internal enterprise tools and mobile applications.",
+      "End-to-end full-stack software development â€” from modern web platforms and APIs to custom internal enterprise tools and mobile applications.",
     mainImage: {
       url: "/images/service-uiux.jpg",
       alt: "IT Application Development software code editor and UI design interface",
@@ -542,7 +542,7 @@ export const servicesData: ServiceDetail[] = [
         "Siloed tools requiring constant manual CSV exports and spreadsheet workarounds",
       ],
     },
-    whyAstrivion: {
+    whyDZ: {
       title: "Why Choose DZ MARKETING SOLUTIONS for Application Development",
       description:
         "We build clean, maintainable software using modern frameworks, modular architecture, comprehensive test suites, and intuitive user interfaces.",
@@ -693,7 +693,7 @@ export const servicesData: ServiceDetail[] = [
         "Inefficient operational workflows requiring repetitive data re-entry across teams",
       ],
     },
-    whyAstrivion: {
+    whyDZ: {
       title: "Why Choose DZ MARKETING SOLUTIONS for ERP Engineering",
       description:
         "We implement, customize, and integrate Enterprise Resource Planning systems engineered specifically around how your business operations actually function.",
@@ -805,3 +805,4 @@ export const servicesData: ServiceDetail[] = [
     ],
   },
 ];
+

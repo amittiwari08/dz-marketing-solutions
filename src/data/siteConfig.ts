@@ -1,13 +1,13 @@
-// Centralized brand + content configuration.
-// Replace these values when real company information is available —
+﻿// Centralized brand + content configuration.
+// Replace these values when real company information is available â€”
 // no component below hard-codes brand strings directly.
 
 export const siteConfig = {
-  companyName: "DZ MARKETING SOLUTIONS PVT. LTD.",
+  companyName: "DZ MARKETING SOLUTIONS",
   shortName: "DZ MARKETING SOLUTIONS",
   tagline: "Intelligent Technology. Built for Growth.",
   description:
-    "DZ MARKETING SOLUTIONS designs and engineers digital systems — software, AI, cloud and digital marketing — that simplify operations and create measurable business value.",
+    "DZ MARKETING SOLUTIONS designs and engineers digital systems â€” software, AI, cloud and digital marketing â€” that simplify operations and create measurable business value.",
   url: "https://www.dzmarketingsolutions.example",
   email: "hello@dzmarketingsolutions.example",
   phone: "+91 00000 00000",
@@ -30,3 +30,4 @@ export const siteConfig = {
 } as const;
 
 export type SiteConfig = typeof siteConfig;
+

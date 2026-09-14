@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
     ArrowLeft,
@@ -37,12 +37,12 @@ export function generateMetadata({ params }: PageProps) {
 
     if (!service) {
         return {
-            title: "Service | DZ MARKETING SOLUTIONS PVT. LTD.",
+            title: "Service | DZ MARKETING SOLUTIONS",
         };
     }
 
     return {
-        title: `${service.title} | DZ MARKETING SOLUTIONS PVT. LTD.`,
+        title: `${service.title} | DZ MARKETING SOLUTIONS`,
         description:
             detail?.heroDescription || service.shortDescription,
     };
@@ -181,7 +181,7 @@ export default function ServiceDetailPage({
 
     const whyTitle =
         detail?.whyTitle ||
-        `Why Choose DZ MARKETING SOLUTIONS PVT. LTD. for ${service.title}?`;
+        `Why Choose DZ MARKETING SOLUTIONS for ${service.title}?`;
 
     const whyDescription =
         detail?.whyDescription ||
@@ -243,7 +243,7 @@ export default function ServiceDetailPage({
                                 size={14}
                                 className="text-[#ff334b]"
                             />
-                            DZ MARKETING SOLUTIONS PVT. LTD.
+                            DZ MARKETING SOLUTIONS
                         </div>
 
                         <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">

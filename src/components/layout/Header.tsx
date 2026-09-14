@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -48,7 +48,7 @@ function Header() {
         <Link
           href="/"
           onClick={closeMenu}
-          aria-label="DZ MARKETING SOLUTIONS PVT. LTD."
+          aria-label="DZ MARKETING SOLUTIONS"
           className="group flex min-w-0 shrink-0 items-center"
         >
           <div className="flex items-center gap-2.5 sm:gap-3">
@@ -56,7 +56,7 @@ function Header() {
             <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 group-hover:ring-red-200 sm:h-12 sm:w-12">
               <img
                 src="/images/brand/dz-logo.png"
-                alt="DZ MARKETING SOLUTIONS PVT. LTD. logo"
+                alt="DZ MARKETING SOLUTIONS logo"
                 className="h-full w-full object-contain p-1"
               />
             </div>

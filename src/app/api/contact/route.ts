@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { siteConfig } from "@/data/siteConfig";
 
 // RESEND_API_KEY, CONTACT_EMAIL and CONTACT_FROM_EMAIL are read from
 // environment variables only. Never expose the API key in client-side
-// code — this route runs server-side and process.env.RESEND_API_KEY is
+// code â€” this route runs server-side and process.env.RESEND_API_KEY is
 // never sent to the browser.
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
@@ -15,7 +15,7 @@ type ContactPayload = {
   company?: string;
   service?: string;
   message?: string;
-  // Honeypot field — real visitors never see or fill this (hidden via CSS
+  // Honeypot field â€” real visitors never see or fill this (hidden via CSS
   // in ContactForm). If it arrives populated, the submission is a bot.
   website?: string;
 };
@@ -30,7 +30,7 @@ const LIMITS = {
 } as const;
 
 // Best-effort in-memory rate limit. This resets on cold start / across
-// serverless instances, so it is a courtesy backstop, not a guarantee —
+// serverless instances, so it is a courtesy backstop, not a guarantee â€”
 // pair with provider- or edge-level rate limiting for real protection.
 const submissionsByIp = new Map<string, number[]>();
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
@@ -73,7 +73,7 @@ export async function POST(request: Request) {
     // Honeypot: bots fill every field including this hidden one. Return a
     // generic success without sending anything, so the bot has no signal
     // that it was caught (this is the one legitimate case for a
-    // non-committal 200 — it never claims a *real* enquiry was delivered
+    // non-committal 200 â€” it never claims a *real* enquiry was delivered
     // to a human recipient, it's simply not a real enquiry at all).
     if (trim(body.website, 200)) {
       return NextResponse.json({ ok: true, delivered: true });
@@ -103,7 +103,7 @@ export async function POST(request: Request) {
 
     if (!resend || !fromEmail || !to) {
       // Email delivery is not fully configured. This is a server
-      // configuration problem, not a successful submission — the client
+      // configuration problem, not a successful submission â€” the client
       // must show a failure state, so this returns a non-2xx status
       // rather than a fake { ok: true }.
       console.error(
@@ -119,17 +119,17 @@ export async function POST(request: Request) {
     const { error: sendError } = await resend.emails.send({
       from: `${siteConfig.companyName} Website <${fromEmail}>`,
       to,
-      subject: `New Website Enquiry — ${name}`,
+      subject: `New Website Enquiry â€” ${name}`,
       reply_to: email,
       text: [
-        "DZ MARKETING SOLUTIONS PVT. LTD.",
+        "DZ MARKETING SOLUTIONS",
         "New Website Enquiry",
         "",
         `Name: ${name}`,
         `Email: ${email}`,
-        `Phone: ${phone || "—"}`,
-        `Company: ${company || "—"}`,
-        `Service: ${service || "—"}`,
+        `Phone: ${phone || "â€”"}`,
+        `Company: ${company || "â€”"}`,
+        `Service: ${service || "â€”"}`,
         "",
         "Message:",
         message,
@@ -152,3 +152,4 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Failed to send enquiry." }, { status: 500 });
   }
 }
+

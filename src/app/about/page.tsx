@@ -207,11 +207,11 @@ export default function AboutUsPage() {
 
           <div className="order-2 lg:order-1">
             <SectionLabel>
-              About DZ MARKETING SOLUTIONS PVT. LTD.
+              About DZ MARKETING SOLUTIONS
             </SectionLabel>
 
             <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.03] tracking-tight text-[#111318] sm:text-5xl md:text-6xl lg:text-7xl">
-              About DZ MARKETING SOLUTIONS PVT. LTD.
+              About DZ MARKETING SOLUTIONS
 
               <span className="block text-red-600">
                 Where Ideas Meet Impact
@@ -254,7 +254,7 @@ export default function AboutUsPage() {
             <div className="relative mx-auto w-full max-w-[560px] overflow-hidden rounded-[24px] border border-gray-200 bg-white p-2 shadow-xl shadow-gray-200/60 sm:rounded-[30px] sm:p-3">
               <img
                 src="/images/service-06.png"
-                alt="DZ MARKETING SOLUTIONS PVT. LTD. technology team"
+                alt="DZ MARKETING SOLUTIONS technology team"
                 className="h-[280px] w-full rounded-[18px] object-cover sm:h-[360px] sm:rounded-[22px] md:h-[400px] lg:h-[430px]"
               />
             </div>
@@ -274,7 +274,7 @@ export default function AboutUsPage() {
             <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-[#f7f7f5] p-2 shadow-sm sm:rounded-[28px] sm:p-3">
               <img
                 src="/images/service-07.png"
-                alt="DZ MARKETING SOLUTIONS PVT. LTD. team working with ERP technology"
+                alt="DZ MARKETING SOLUTIONS team working with ERP technology"
                 loading="lazy"
                 className="h-[280px] w-full rounded-[18px] object-cover sm:h-[360px] sm:rounded-[22px] lg:h-[430px]"
               />
@@ -285,7 +285,7 @@ export default function AboutUsPage() {
 
           <div className="order-1 lg:order-2">
             <SectionLabel>
-              Welcome to DZ MARKETING SOLUTIONS PVT. LTD.
+              Welcome to DZ MARKETING SOLUTIONS
             </SectionLabel>
 
             <h2 className="text-3xl font-extrabold tracking-tight text-[#111318] sm:text-4xl lg:text-5xl">
@@ -294,7 +294,7 @@ export default function AboutUsPage() {
 
             <div className="mt-6 space-y-5 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
               <p>
-                We're DZ MARKETING SOLUTIONS PVT. LTD. – a team that believes
+                We're DZ MARKETING SOLUTIONS – a team that believes
                 technology should make life easier, not harder. Do you have
                 ideas you want to turn into real action? We're here for you
                 whether you are a small business or a large enterprise. Turn
@@ -488,7 +488,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* =====================================================
-          DZ MARKETING SOLUTIONS PVT. LTD. WAY
+          DZ MARKETING SOLUTIONS WAY
       ===================================================== */}
 
       <section className="bg-white py-16 sm:py-20 lg:py-24">
@@ -499,7 +499,7 @@ export default function AboutUsPage() {
             <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-[#f7f7f5] p-2 shadow-sm sm:rounded-[30px] sm:p-3">
               <img
                 src="/images/service-03.png"
-                alt="DZ MARKETING SOLUTIONS PVT. LTD. technology team"
+                alt="DZ MARKETING SOLUTIONS technology team"
                 loading="lazy"
                 className="h-[320px] w-full rounded-[18px] object-cover sm:h-[450px] sm:rounded-[24px] lg:h-[520px]"
               />
@@ -510,13 +510,13 @@ export default function AboutUsPage() {
 
           <div className="order-1 lg:order-2">
             <SectionLabel>
-              The DZ MARKETING SOLUTIONS PVT. LTD. Way
+              The DZ MARKETING SOLUTIONS Way
             </SectionLabel>
 
             <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-[#111318] sm:text-4xl lg:text-5xl">
               Thrive In Everything You Choose-
               <span className="block text-red-600">
-                The DZ MARKETING SOLUTIONS PVT. LTD. Way
+                The DZ MARKETING SOLUTIONS Way
               </span>
             </h2>
 

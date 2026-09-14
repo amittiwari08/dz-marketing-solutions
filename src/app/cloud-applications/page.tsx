@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { servicesData } from "@/data/servicesData";
@@ -12,9 +12,9 @@ import { ServiceFAQ } from "@/components/services/ServiceFAQ";
 import { ServiceCTA } from "@/components/services/ServiceCTA";
 
 export const metadata: Metadata = {
-  title: "Cloud Application Services | DZ MARKETING SOLUTIONS PVT. LTD.",
+  title: "Cloud Application Services | DZ MARKETING SOLUTIONS",
   description:
-    "Cloud-native application engineering, cloud migration, Infrastructure as Code, and auto-scaling cloud architectures by DZ MARKETING SOLUTIONS PVT. LTD.",
+    "Cloud-native application engineering, cloud migration, Infrastructure as Code, and auto-scaling cloud architectures by DZ MARKETING SOLUTIONS",
   alternates: { canonical: "/cloud-applications" },
 };
 
@@ -27,7 +27,7 @@ export default function CloudApplicationsPage() {
       <ServiceHero service={service} />
       <ServiceProblem businessChallenge={service.businessChallenge} />
       <ServiceWhyChoose
-        whyAstrivion={service.whyAstrivion}
+        whyDZ={service.whyDZ}
         supportingImage={service.supportingImages[0]}
       />
       <ServiceBenefits benefits={service.benefits} />
@@ -44,3 +44,5 @@ export default function CloudApplicationsPage() {
     </>
   );
 }
+
+

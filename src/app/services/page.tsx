@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle2,
@@ -25,7 +25,7 @@ const serviceImages = [
   "/images/service-11.png",
 ];
 
-const whyAstrivion = [
+const whyDZ = [
   {
     icon: Sparkles,
     title: "Modern Technology",
@@ -62,7 +62,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0">
           <img
             src="/images/about-team-enhanced.png"
-            alt="DZ MARKETING SOLUTIONS PVT. LTD. team"
+            alt="DZ MARKETING SOLUTIONS team"
             className="h-full w-full object-cover"
           />
 
@@ -142,7 +142,7 @@ export default function ServicesPage() {
             <p className="mt-5 text-base leading-7 text-gray-600 sm:text-lg">
               From technology consulting to digital marketing,
               application development, AI, design, and business
-              solutions — we provide everything you need to build
+              solutions â€” we provide everything you need to build
               and grow digitally.
             </p>
           </div>
@@ -258,7 +258,7 @@ export default function ServicesPage() {
               </h2>
 
               <p className="mt-6 max-w-xl leading-8 text-gray-600">
-                At DZ MARKETING SOLUTIONS PVT. LTD., we believe great technology
+                At DZ MARKETING SOLUTIONS, we believe great technology
                 is not just about features. It is about creating
                 measurable value, simplifying operations,
                 improving customer experiences, and helping
@@ -277,7 +277,7 @@ export default function ServicesPage() {
 
             {/* Feature cards */}
             <div className="grid gap-5 sm:grid-cols-2">
-              {whyAstrivion.map((item) => {
+              {whyDZ.map((item) => {
                 const Icon = item.icon;
 
                 return (
@@ -346,3 +346,4 @@ export default function ServicesPage() {
     </main>
   );
 }
+

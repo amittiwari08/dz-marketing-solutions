@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { servicesData } from "@/data/servicesData";
 import { ServiceHero } from "@/components/services/ServiceHero";
@@ -11,9 +11,9 @@ import { ServiceFAQ } from "@/components/services/ServiceFAQ";
 import { ServiceCTA } from "@/components/services/ServiceCTA";
 
 export const metadata: Metadata = {
-  title: "Enterprise Resource Planning Services | DZ MARKETING SOLUTIONS PVT. LTD.",
+  title: "Enterprise Resource Planning Services | DZ MARKETING SOLUTIONS",
   description:
-    "Custom ERP implementation, process automation, financial ledgers, and supply chain integrations by DZ MARKETING SOLUTIONS PVT. LTD.",
+    "Custom ERP implementation, process automation, financial ledgers, and supply chain integrations by DZ MARKETING SOLUTIONS",
   alternates: { canonical: "/enterprise-resource-planning" },
 };
 
@@ -26,7 +26,7 @@ export default function EnterpriseResourcePlanningPage() {
       <ServiceHero service={service} />
       <ServiceProblem businessChallenge={service.businessChallenge} />
       <ServiceWhyChoose
-        whyAstrivion={service.whyAstrivion}
+        whyDZ={service.whyDZ}
         supportingImage={service.supportingImages[0]}
       />
       <ServiceBenefits benefits={service.benefits} />
@@ -43,3 +43,5 @@ export default function EnterpriseResourcePlanningPage() {
     </>
   );
 }
+
+

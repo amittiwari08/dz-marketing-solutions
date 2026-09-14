@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { servicesData } from "@/data/servicesData";
 import { ServiceHero } from "@/components/services/ServiceHero";
@@ -11,9 +11,9 @@ import { ServiceFAQ } from "@/components/services/ServiceFAQ";
 import { ServiceCTA } from "@/components/services/ServiceCTA";
 
 export const metadata: Metadata = {
-  title: "IT Application Development Services | DZ MARKETING SOLUTIONS PVT. LTD.",
+  title: "IT Application Development Services | DZ MARKETING SOLUTIONS",
   description:
-    "Custom software engineering, modern web applications, API design, and legacy system modernization by DZ MARKETING SOLUTIONS PVT. LTD.",
+    "Custom software engineering, modern web applications, API design, and legacy system modernization by DZ MARKETING SOLUTIONS",
   alternates: { canonical: "/application-development" },
 };
 
@@ -26,7 +26,7 @@ export default function ApplicationDevelopmentPage() {
       <ServiceHero service={service} />
       <ServiceProblem businessChallenge={service.businessChallenge} />
       <ServiceWhyChoose
-        whyAstrivion={service.whyAstrivion}
+        whyDZ={service.whyDZ}
         supportingImage={service.supportingImages[0]}
       />
       <ServiceBenefits benefits={service.benefits} />
@@ -43,3 +43,5 @@ export default function ApplicationDevelopmentPage() {
     </>
   );
 }
+
+

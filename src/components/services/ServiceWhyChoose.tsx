@@ -1,15 +1,15 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { ShieldCheck } from "lucide-react";
 import type { ServiceDetail } from "@/data/servicesData";
 
 interface ServiceWhyChooseProps {
-  whyAstrivion: ServiceDetail["whyAstrivion"];
+  whyDZ: ServiceDetail["whyDZ"];
   supportingImage?: { url: string; alt: string };
 }
 
 export function ServiceWhyChoose({
-  whyAstrivion,
+  whyDZ,
   supportingImage,
 }: ServiceWhyChooseProps) {
   return (
@@ -38,14 +38,14 @@ export function ServiceWhyChoose({
               Why DZ MARKETING SOLUTIONS
             </span>
             <h2 className="mt-3 font-display text-2xl font-semibold leading-tight text-white sm:text-3xl md:text-4xl">
-              {whyAstrivion.title}
+              {whyDZ.title}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/70">
-              {whyAstrivion.description}
+              {whyDZ.description}
             </p>
 
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
-              {whyAstrivion.points.map((point, idx) => (
+              {whyDZ.points.map((point, idx) => (
                 <div
                   key={idx}
                   className="rounded-xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-pink-500/20"
@@ -68,3 +68,4 @@ export function ServiceWhyChoose({
     </section>
   );
 }
+

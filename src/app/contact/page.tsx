@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle2,
@@ -25,7 +25,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    value: "contact@astrivionventures.co",
+    value: "akmth3322@gmail.com",
     detail: "We'll get back to you soon",
   },
   {
@@ -60,22 +60,22 @@ const reasons = [
 const socials = [
   {
     name: "Facebook",
-    href: "https://www.facebook.com/astrivionventures/",
+    href: "#",
     short: "f",
   },
   {
     name: "X",
-    href: "https://x.com/astrivion_v",
-    short: "𝕏",
+    href: "https://x.com/DZ Marketing Solutions_v",
+    short: "ð•",
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/company/astrivion-ventures-private-limited/",
+    href: "#",
     short: "in",
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/astrivionventures/",
+    href: "#",
     short: "ig",
   },
 ];
@@ -192,7 +192,7 @@ export default function ContactPage() {
           <div>
 
             <SectionLabel>
-              Contact DZ MARKETING SOLUTIONS PVT. LTD.
+              Contact DZ MARKETING SOLUTIONS
             </SectionLabel>
 
             <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-[#111318] sm:text-4xl lg:text-5xl">
@@ -592,7 +592,7 @@ export default function ContactPage() {
                 <div>
 
                   <p className="text-sm font-bold text-gray-900 sm:text-base">
-                    DZ MARKETING SOLUTIONS PVT. LTD.
+                    DZ MARKETING SOLUTIONS
                   </p>
 
                   <p className="mt-1 text-xs leading-6 text-gray-500 sm:text-sm">
@@ -647,7 +647,7 @@ export default function ContactPage() {
                 <div className="mt-4 rounded-xl border border-gray-200 bg-white/95 px-4 py-2 text-center shadow-lg backdrop-blur-sm">
 
                   <p className="text-xs font-bold text-gray-900">
-                    DZ MARKETING SOLUTIONS PVT. LTD.
+                    DZ MARKETING SOLUTIONS
                   </p>
 
                   <p className="mt-0.5 text-[10px] text-gray-500">
@@ -694,13 +694,13 @@ export default function ContactPage() {
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600">
               Your next big idea could be the beginning of something amazing.
-              Talk to DZ MARKETING SOLUTIONS PVT. LTD. and let&apos;s build it together.
+              Talk to DZ MARKETING SOLUTIONS and let&apos;s build it together.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 min-[400px]:flex-row">
 
               <a
-                href="mailto:contact@astrivionventures.co"
+                href="mailto:akmth3322@gmail.com"
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-red-600 px-6 py-3 text-xs font-bold text-white transition duration-300 hover:bg-red-700 sm:text-sm"
               >
                 Email Us
@@ -725,3 +725,5 @@ export default function ContactPage() {
     </main>
   );
 }
+
+
