@@ -15,9 +15,11 @@ export const siteConfig = {
     "E-20, Upper Ground Floor, Jawahar Park, Laxmi Nagar, Delhi - 110092",
   logo: "/images/brand/dz-logo.png",
   social: {
-    linkedin: "https://linkedin.com/company/dz-marketing-solutions",
-    instagram: "https://instagram.com/dzmarketingsolutions",
+    linkedin:
+      "https://www.linkedin.com/company/dz-marketing-solutions-pvt-ltd/posts/?feedView=all",
+    instagram: "https://www.instagram.com/dz.marketing.solutions/",
     facebook: "https://facebook.com/dzmarketingsolutions",
+    x: "https://x.com/dz_marketing_",
   },
   nav: [
     { label: "Home", href: "/" },

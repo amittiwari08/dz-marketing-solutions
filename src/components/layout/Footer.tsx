@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Linkedin, Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
+import { Linkedin, Instagram, Facebook, X, Mail, Phone, MapPin } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { siteConfig } from "@/data/siteConfig";
@@ -32,6 +32,7 @@ export function Footer() {
                 { icon: Linkedin, href: siteConfig.social.linkedin, label: "LinkedIn" },
                 { icon: Instagram, href: siteConfig.social.instagram, label: "Instagram" },
                 { icon: Facebook, href: siteConfig.social.facebook, label: "Facebook" },
+                { icon: X, href: siteConfig.social.x, label: "X" },
               ].map(({ icon: SocialIcon, href, label }) => (
                 <a
                   key={label}

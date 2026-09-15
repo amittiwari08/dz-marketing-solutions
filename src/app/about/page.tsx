@@ -1,7 +1,4 @@
-﻿
-/* eslint-disable react/no-unescaped-entities */
-
-import Link from "next/link";
+﻿import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle2,
@@ -307,17 +304,17 @@ export default function AboutUsPage() {
               <p>
                 We don't just build tech; we build trust, connection, and
                 solutions that feel like they were made just for you. Whether
-                it's a mobile app that feels just right, a travel platform
-                that books trips in a snap, or a system to keep your business
+                it's a mobile app that feels just right, a travel platform that
+                books trips in a snap, or a system to keep your business
                 running smoothly, we shall make it happen.
               </p>
 
               <p>
                 We started with a simple idea: technology should serve people,
                 not the other way around. Every line of code we write, every
-                design we create, every late-night support call we answer –
-                it's all about helping you succeed. Your dream is our mission,
-                and we're here to carry it forward with heart and hustle.
+                design we create, every late-night support call we answer – it's
+                all about helping you succeed. Your dream is our mission, and
+                we're here to carry it forward with heart and hustle.
               </p>
             </div>
           </div>

@@ -70,17 +70,17 @@ const socials = [
   },
   {
     name: "X",
-    href: "https://x.com/DZ Marketing Solutions_v",
+    href: "https://x.com/dz_marketing_",
     short: "ð•",
   },
   {
     name: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/dz-marketing-solutions-pvt-ltd/posts/?feedView=all",
     short: "in",
   },
   {
     name: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/dz.marketing.solutions/",
     short: "ig",
   },
 ];
