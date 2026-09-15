@@ -1,4 +1,6 @@
-﻿import Link from "next/link";
+﻿/* eslint-disable react/no-unescaped-entities */
+
+import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle2,
@@ -197,14 +199,8 @@ function ValueCard({
 export default function AboutUsPage() {
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-[#f7f7f5] text-[#111318]">
-      {/* =====================================================
-          HERO
-      ===================================================== */}
-
       <section className="relative overflow-hidden border-b border-black/5 bg-[#f7f7f5]">
         <div className="mx-auto grid min-h-[560px] w-full max-w-7xl items-center gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1fr_0.9fr] lg:gap-16 lg:px-10 lg:py-24">
-          {/* HERO CONTENT */}
-
           <div className="order-2 lg:order-1">
             <SectionLabel>
               About DZ MARKETING SOLUTIONS
@@ -212,7 +208,6 @@ export default function AboutUsPage() {
 
             <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.03] tracking-tight text-[#111318] sm:text-5xl md:text-6xl lg:text-7xl">
               About DZ MARKETING SOLUTIONS
-
               <span className="block text-red-600">
                 Where Ideas Meet Impact
               </span>
@@ -248,8 +243,6 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          {/* HERO IMAGE */}
-
           <div className="order-1 lg:order-2">
             <div className="relative mx-auto w-full max-w-[560px] overflow-hidden rounded-[24px] border border-gray-200 bg-white p-2 shadow-xl shadow-gray-200/60 sm:rounded-[30px] sm:p-3">
               <img
@@ -262,14 +255,8 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* =====================================================
-          WHO WE ARE
-      ===================================================== */}
-
       <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
-          {/* IMAGE */}
-
           <div className="order-2 lg:order-1">
             <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-[#f7f7f5] p-2 shadow-sm sm:rounded-[28px] sm:p-3">
               <img
@@ -280,8 +267,6 @@ export default function AboutUsPage() {
               />
             </div>
           </div>
-
-          {/* CONTENT */}
 
           <div className="order-1 lg:order-2">
             <SectionLabel>
@@ -321,10 +306,6 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* =====================================================
-          WHAT DRIVES US
-      ===================================================== */}
-
       <section className="bg-[#f7f7f5] py-16 sm:py-20 lg:py-24">
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-3xl text-center">
@@ -350,8 +331,6 @@ export default function AboutUsPage() {
             </p>
           </div>
 
-          {/* VALUE CARDS */}
-
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
             {values.map((value) => (
               <ValueCard
@@ -364,10 +343,6 @@ export default function AboutUsPage() {
           </div>
         </div>
       </section>
-
-      {/* =====================================================
-          WHAT WE DO FOR YOU
-      ===================================================== */}
 
       <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10">
@@ -384,8 +359,6 @@ export default function AboutUsPage() {
               we create technology that solves real business challenges.
             </p>
           </div>
-
-          {/* SERVICE CARDS */}
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
             {services.map((service, index) => {
@@ -420,14 +393,8 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* =====================================================
-          WHY WE'RE DIFFERENT
-      ===================================================== */}
-
       <section className="bg-[#f7f7f5] py-16 sm:py-20 lg:py-24">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-10">
-          {/* CONTENT */}
-
           <div>
             <SectionLabel>Why We're Different</SectionLabel>
 
@@ -445,8 +412,6 @@ export default function AboutUsPage() {
               makes your business tick to build it into something that feels
               like it's yours, because it is.
             </p>
-
-            {/* DIFFERENCES */}
 
             <div className="mt-8 space-y-4">
               {differences.map((item) => (
@@ -472,8 +437,6 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          {/* IMAGE */}
-
           <div>
             <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-white p-2 shadow-lg sm:rounded-[30px] sm:p-3">
               <img
@@ -487,14 +450,8 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* =====================================================
-          DZ MARKETING SOLUTIONS WAY
-      ===================================================== */}
-
       <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
-          {/* IMAGE */}
-
           <div className="order-2 lg:order-1">
             <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-[#f7f7f5] p-2 shadow-sm sm:rounded-[30px] sm:p-3">
               <img
@@ -505,8 +462,6 @@ export default function AboutUsPage() {
               />
             </div>
           </div>
-
-          {/* CONTENT */}
 
           <div className="order-1 lg:order-2">
             <SectionLabel>
@@ -548,14 +503,8 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* =====================================================
-          FINAL CTA
-      ===================================================== */}
-
       <section className="bg-[#f7f7f5] px-5 py-14 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
         <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[24px] border border-red-100 bg-white shadow-sm sm:rounded-[30px]">
-          {/* DECORATIVE GLOW */}
-
           <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-red-100 blur-[110px]" />
 
           <div className="relative px-5 py-12 text-center sm:px-10 sm:py-16 lg:px-16 lg:py-20">
