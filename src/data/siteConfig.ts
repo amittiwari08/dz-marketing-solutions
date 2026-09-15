@@ -9,8 +9,8 @@ export const siteConfig = {
   description:
     "DZ MARKETING SOLUTIONS designs and engineers digital systems â€” software, AI, cloud and digital marketing â€” that simplify operations and create measurable business value.",
   url: "https://www.dzmarketingsolutions.example",
-  email: "hello@dzmarketingsolutions.example",
-  phone: "+91 00000 00000",
+  email: "contactdzmarketingsolutions@gmail.com",
+  phone: "9654034295",
   address:
     "E-20, Upper Ground Floor, Jawahar Park, Laxmi Nagar, Delhi - 110092",
   logo: "/images/brand/dz-logo.png",

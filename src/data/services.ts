@@ -203,7 +203,7 @@ export const services: Service[] = [
   {
     id: "travel-solutions",
     number: "11",
-    title: "Best Travel Solutions",
+    title: "Global Travel Service",
     shortDescription:
       "Booking engines, GDS integrations and travel platforms for agencies and travel-tech businesses.",
     description:

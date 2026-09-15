@@ -1,8 +1,13 @@
-﻿import Link from "next/link";
+﻿"use client";
+
+import { useState, FormEvent } from "react";
+import Link from "next/link";
 import {
+  AlertTriangle,
   ArrowRight,
   CheckCircle2,
   Clock3,
+  Loader2,
   Mail,
   MapPin,
   MessageCircle,
@@ -25,13 +30,13 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    value: "akmth3322@gmail.com",
+    value: "contactdzmarketingsolutions@gmail.com",
     detail: "We'll get back to you soon",
   },
   {
     icon: Phone,
     title: "Call Us",
-    value: "8700391002",
+    value: "9654034295",
     detail: "Available during business hours",
   },
   {
@@ -102,6 +107,37 @@ function SectionLabel({
 ========================================================= */
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
+    "idle"
+  );
+
+  async function handleContactSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("loading");
+
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const payload = await res.json().catch(() => null);
+
+      if (!res.ok || !payload?.delivered) {
+        throw new Error(payload?.error || "Request failed");
+      }
+
+      setStatus("success");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-[#f7f7f5] text-[#111318]">
 
@@ -167,7 +203,7 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="tel:8700391002"
+                href="tel:9654034295"
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-gray-300 bg-white/90 px-6 py-3 text-xs font-bold text-gray-800 shadow-sm backdrop-blur-sm transition duration-300 hover:border-red-400 hover:text-red-600 sm:text-sm"
               >
                 <Phone className="h-4 w-4" />
@@ -335,10 +371,29 @@ export default function ContactPage() {
           <div className="mx-auto mt-10 max-w-4xl rounded-[24px] border border-gray-200 bg-white p-5 shadow-sm sm:mt-12 sm:rounded-[28px] sm:p-8 lg:p-10">
 
             <form
-              action="/api/contact"
-              method="POST"
+              onSubmit={handleContactSubmit}
               className="space-y-5"
             >
+
+              {status === "success" && (
+                <div className="flex items-start gap-3 rounded-xl border border-green-200 bg-green-50 px-4 py-3.5 text-sm text-green-700">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
+                  <p>
+                    Thanks! Your enquiry has been sent. Our team will get
+                    back to you shortly.
+                  </p>
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3.5 text-sm text-red-600">
+                  <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                  <p>
+                    We couldn&apos;t send your enquiry right now. Please try
+                    again or contact us directly.
+                  </p>
+                </div>
+              )}
 
               {/* NAME + EMAIL */}
               <div className="grid gap-5 sm:grid-cols-2">
@@ -467,8 +522,8 @@ export default function ContactPage() {
                       Graphic Design
                     </option>
 
-                    <option value="Best Travel Solutions">
-                      Best Travel Solutions
+                    <option value="Global Travel Service">
+                      Global Travel Service
                     </option>
 
                     <option value="Other">
@@ -530,10 +585,20 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-red-600/10 transition duration-300 hover:bg-red-700 sm:w-auto sm:min-w-[200px]"
+                  disabled={status === "loading"}
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-red-600/10 transition duration-300 hover:bg-red-700 disabled:opacity-70 sm:w-auto sm:min-w-[200px]"
                 >
-                  Send Message
-                  <Send className="h-4 w-4" />
+                  {status === "loading" ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="h-4 w-4" />
+                    </>
+                  )}
                 </button>
 
               </div>
@@ -700,7 +765,7 @@ export default function ContactPage() {
             <div className="mt-8 flex flex-col justify-center gap-3 min-[400px]:flex-row">
 
               <a
-                href="mailto:akmth3322@gmail.com"
+                href="mailto:contactdzmarketingsolutions@gmail.com"
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-red-600 px-6 py-3 text-xs font-bold text-white transition duration-300 hover:bg-red-700 sm:text-sm"
               >
                 Email Us

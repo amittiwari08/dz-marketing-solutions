@@ -224,12 +224,6 @@ export default function ServicesPage() {
                     <p className="mt-3 line-clamp-3 text-sm leading-6 text-gray-600">
                       {service.shortDescription}
                     </p>
-
-                    <div className="mt-5 flex items-center gap-2 text-xs font-semibold text-gray-400">
-                      <span className="h-px w-6 bg-[#ff334b]" />
-
-                      Learn More
-                    </div>
                   </div>
                 </article>
               );
