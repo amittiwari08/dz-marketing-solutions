@@ -27,7 +27,6 @@ const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
 
 // Best-effort rate limiting for a running server instance.
-// For stronger production protection, also enable Vercel Firewall.
 const submissionsByIp = new Map<string, number[]>();
 
 function isRateLimited(ip: string): boolean {
@@ -161,7 +160,6 @@ export async function POST(request: Request) {
     }
 
     const resend = new Resend(apiKey);
-
     const submittedAt = new Date().toISOString();
 
     const plainText = [
