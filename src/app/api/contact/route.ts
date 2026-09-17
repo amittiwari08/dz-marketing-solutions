@@ -2,11 +2,7 @@
 import { Resend } from "resend";
 import { siteConfig } from "@/data/siteConfig";
 
-// RESEND_API_KEY, CONTACT_EMAIL and CONTACT_FROM_EMAIL are read from
-// environment variables only. Never expose the API key in client-side
-// code â€” this route runs server-side and process.env.RESEND_API_KEY is
-// never sent to the browser.
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+export const runtime = "nodejs";
 
 type ContactPayload = {
   name?: string;
@@ -15,8 +11,6 @@ type ContactPayload = {
   company?: string;
   service?: string;
   message?: string;
-  // Honeypot field â€” real visitors never see or fill this (hidden via CSS
-  // in ContactForm). If it arrives populated, the submission is a bot.
   website?: string;
 };
 
@@ -29,58 +23,97 @@ const LIMITS = {
   message: 4000,
 } as const;
 
-// Best-effort in-memory rate limit. This resets on cold start / across
-// serverless instances, so it is a courtesy backstop, not a guarantee â€”
-// pair with provider- or edge-level rate limiting for real protection.
-const submissionsByIp = new Map<string, number[]>();
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
 
+// Best-effort rate limiting for a running server instance.
+// For stronger production protection, also enable Vercel Firewall.
+const submissionsByIp = new Map<string, number[]>();
+
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
-  const recent = (submissionsByIp.get(ip) ?? []).filter(
-    (t) => now - t < RATE_LIMIT_WINDOW_MS
+
+  const recentSubmissions = (
+    submissionsByIp.get(ip) ?? []
+  ).filter(
+    (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS
   );
-  recent.push(now);
-  submissionsByIp.set(ip, recent);
-  return recent.length > RATE_LIMIT_MAX;
+
+  recentSubmissions.push(now);
+  submissionsByIp.set(ip, recentSubmissions);
+
+  return recentSubmissions.length > RATE_LIMIT_MAX;
 }
 
-function trim(value: unknown, max: number): string {
-  if (typeof value !== "string") return "";
-  return value.trim().slice(0, max);
+function trim(value: unknown, maxLength: number): string {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value.trim().slice(0, maxLength);
+}
+
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function getClientIp(request: Request): string {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0].trim();
+  }
+
+  return request.headers.get("x-real-ip") || "unknown";
 }
 
 export async function POST(request: Request) {
   try {
-    const ip =
-      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-      request.headers.get("x-real-ip") ||
-      "unknown";
+    const ip = getClientIp(request);
 
     if (ip !== "unknown" && isRateLimited(ip)) {
       return NextResponse.json(
-        { error: "Too many requests. Please try again shortly." },
+        {
+          ok: false,
+          error: "Too many requests. Please try again shortly.",
+        },
         { status: 429 }
       );
     }
 
-    const body = (await request.json().catch(() => null)) as ContactPayload | null;
+    const body = (await request.json().catch(() => null)) as
+      | ContactPayload
+      | null;
+
     if (!body) {
-      return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Invalid request body.",
+        },
+        { status: 400 }
+      );
     }
 
-    // Honeypot: bots fill every field including this hidden one. Return a
-    // generic success without sending anything, so the bot has no signal
-    // that it was caught (this is the one legitimate case for a
-    // non-committal 200 â€” it never claims a *real* enquiry was delivered
-    // to a human recipient, it's simply not a real enquiry at all).
+    // Honeypot protection for basic bots.
     if (trim(body.website, 200)) {
-      return NextResponse.json({ ok: true, delivered: true });
+      return NextResponse.json({
+        ok: true,
+        delivered: true,
+      });
     }
 
     const name = trim(body.name, LIMITS.name);
-    const email = trim(body.email, LIMITS.email);
+    const email = trim(body.email, LIMITS.email).toLowerCase();
     const phone = trim(body.phone, LIMITS.phone);
     const company = trim(body.company, LIMITS.company);
     const service = trim(body.service, LIMITS.service);
@@ -88,68 +121,161 @@ export async function POST(request: Request) {
 
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: "Name, email and message are required." },
+        {
+          ok: false,
+          error: "Name, email and message are required.",
+        },
         { status: 400 }
       );
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
+    if (!isValidEmail(email)) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Please enter a valid email address.",
+        },
+        { status: 400 }
+      );
     }
 
-    const to = process.env.CONTACT_EMAIL;
+    const apiKey = process.env.RESEND_API_KEY;
+    const destinationEmail = process.env.CONTACT_EMAIL;
     const fromEmail = process.env.CONTACT_FROM_EMAIL;
 
-    if (!resend || !fromEmail || !to) {
-      // Email delivery is not fully configured. This is a server
-      // configuration problem, not a successful submission â€” the client
-      // must show a failure state, so this returns a non-2xx status
-      // rather than a fake { ok: true }.
-      console.error(
-        "Contact form: email delivery is not fully configured (requires RESEND_API_KEY, CONTACT_FROM_EMAIL and CONTACT_EMAIL). Enquiry was NOT sent:",
-        { name, email, phone, company, service, message }
-      );
+    if (!apiKey || !destinationEmail || !fromEmail) {
+      console.error("Contact form configuration is incomplete.", {
+        hasApiKey: Boolean(apiKey),
+        hasDestinationEmail: Boolean(destinationEmail),
+        hasFromEmail: Boolean(fromEmail),
+      });
+
       return NextResponse.json(
-        { error: "Email delivery is not configured yet." },
+        {
+          ok: false,
+          error:
+            "The contact service is temporarily unavailable. Please try again later.",
+        },
         { status: 503 }
       );
     }
 
-    const { error: sendError } = await resend.emails.send({
+    const resend = new Resend(apiKey);
+
+    const submittedAt = new Date().toISOString();
+
+    const plainText = [
+      "DZ MARKETING SOLUTIONS",
+      "New Website Enquiry",
+      "",
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Phone: ${phone || "Not provided"}`,
+      `Company: ${company || "Not provided"}`,
+      `Service: ${service || "Not selected"}`,
+      "",
+      "Message:",
+      message,
+      "",
+      `Submitted: ${submittedAt}`,
+    ].join("\n");
+
+    const htmlContent = `
+      <div
+        style="
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          color: #222;
+        "
+      >
+        <h2>New Website Enquiry</h2>
+
+        <p>
+          <strong>Name:</strong>
+          ${escapeHtml(name)}
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          ${escapeHtml(email)}
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          ${escapeHtml(phone || "Not provided")}
+        </p>
+
+        <p>
+          <strong>Company:</strong>
+          ${escapeHtml(company || "Not provided")}
+        </p>
+
+        <p>
+          <strong>Service:</strong>
+          ${escapeHtml(service || "Not selected")}
+        </p>
+
+        <h3>Project Details</h3>
+
+        <p>
+          ${escapeHtml(message).replace(/\n/g, "<br />")}
+        </p>
+
+        <p>
+          <strong>Submitted:</strong>
+          ${escapeHtml(submittedAt)}
+        </p>
+      </div>
+    `;
+
+    const { data, error } = await resend.emails.send({
       from: `${siteConfig.companyName} Website <${fromEmail}>`,
-      to,
-      subject: `New Website Enquiry â€” ${name}`,
-      reply_to: email,
-      text: [
-        "DZ MARKETING SOLUTIONS",
-        "New Website Enquiry",
-        "",
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Phone: ${phone || "â€”"}`,
-        `Company: ${company || "â€”"}`,
-        `Service: ${service || "â€”"}`,
-        "",
-        "Message:",
-        message,
-        "",
-        `Submitted: ${new Date().toISOString()}`,
-      ].join("\n"),
+      to: [destinationEmail],
+      subject: `New Website Enquiry — ${name}`,
+      replyTo: email,
+      text: plainText,
+      html: htmlContent,
     });
 
-    if (sendError) {
-      console.error("Contact form: Resend rejected the send:", sendError);
+    if (error) {
+      console.error("Resend rejected the contact enquiry.", {
+        name: error.name,
+        message: error.message,
+      });
+
       return NextResponse.json(
-        { error: "The email provider could not deliver this enquiry." },
+        {
+          ok: false,
+          error:
+            "We could not send your enquiry right now. Please try again later.",
+        },
         { status: 502 }
       );
     }
 
-    return NextResponse.json({ ok: true, delivered: true });
+    console.info("Contact enquiry sent successfully.", {
+      emailId: data?.id,
+    });
+
+    return NextResponse.json(
+      {
+        ok: true,
+        delivered: true,
+        message:
+          "Thank you! Your enquiry has been sent successfully. We will contact you soon.",
+      },
+      { status: 200 }
+    );
   } catch (error) {
-    console.error("Contact form error:", error);
-    return NextResponse.json({ error: "Failed to send enquiry." }, { status: 500 });
+    console.error("Unexpected contact form error:", error);
+
+    return NextResponse.json(
+      {
+        ok: false,
+        error:
+          "We could not send your enquiry right now. Please try again later.",
+      },
+      { status: 500 }
+    );
   }
 }
-
