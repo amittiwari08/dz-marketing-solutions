@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState, FormEvent } from "react";
+import { FormEvent, ReactNode, useState } from "react";
 import Link from "next/link";
 import {
   AlertTriangle,
@@ -24,7 +24,8 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    value: "E-20, Upper Ground Floor, Jawahar Park, Laxmi Nagar, Delhi - 110092",
+    value:
+      "E-20, Upper Ground Floor, Jawahar Park, Laxmi Nagar, Delhi - 110092",
     detail: "",
   },
   {
@@ -71,7 +72,7 @@ const socials = [
   {
     name: "X",
     href: "https://x.com/dz_marketing_",
-    short: "ð•",
+    short: "X",
   },
   {
     name: "LinkedIn",
@@ -89,11 +90,7 @@ const socials = [
    SECTION LABEL
 ========================================================= */
 
-function SectionLabel({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function SectionLabel({ children }: { children: ReactNode }) {
   return (
     <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3.5 py-2 text-[10px] font-semibold text-red-600 sm:text-xs">
       <Sparkles className="h-3.5 w-3.5" />
@@ -107,33 +104,66 @@ function SectionLabel({
 ========================================================= */
 
 export default function ContactPage() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   async function handleContactSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
     setStatus("loading");
 
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const formData = new FormData(form);
+
+    const accessKey =
+      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      console.error(
+        "NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY is not configured."
+      );
+      setStatus("error");
+      return;
+    }
+
+    formData.append("access_key", accessKey);
+
+    formData.append(
+      "subject",
+      "New Website Enquiry — DZ MARKETING SOLUTIONS"
+    );
+
+    formData.append(
+      "from_name",
+      "DZ MARKETING SOLUTIONS Website"
+    );
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
+          body: formData,
+        }
+      );
 
-      const payload = await res.json().catch(() => null);
+      const result = await response.json();
 
-      if (!res.ok || !payload?.delivered) {
-        throw new Error(payload?.error || "Request failed");
+      if (!response.ok || !result.success) {
+        console.error("Web3Forms error:", result);
+        throw new Error(
+          result.message || "Failed to send enquiry"
+        );
       }
 
       setStatus("success");
       form.reset();
-    } catch {
+    } catch (error) {
+      console.error("Contact form error:", error);
       setStatus("error");
     }
   }
@@ -147,7 +177,7 @@ export default function ContactPage() {
 
       <section className="relative isolate overflow-hidden border-b border-black/5">
 
-        {/* Existing image */}
+        {/* Background image */}
         <div
           aria-hidden="true"
           className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
@@ -162,7 +192,7 @@ export default function ContactPage() {
           className="absolute inset-0 -z-10 bg-gradient-to-r from-[#f7f7f5]/95 via-[#f7f7f5]/78 to-[#f7f7f5]/20"
         />
 
-        {/* Subtle bottom fade */}
+        {/* Bottom fade */}
         <div
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 -z-10 h-28 bg-gradient-to-t from-[#f7f7f5] to-transparent"
@@ -177,19 +207,18 @@ export default function ContactPage() {
             </SectionLabel>
 
             <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.03] tracking-tight text-[#111318] sm:text-5xl md:text-6xl lg:text-7xl">
-
               Let&apos;s Build Something
 
               <span className="block text-red-600">
                 Great Together
               </span>
-
             </h1>
 
             <p className="mt-6 max-w-xl text-sm leading-6 text-gray-600 sm:text-base sm:leading-7 lg:text-lg">
-              Have an idea, a challenge, or a project in mind? Tell us what
-              you&apos;re working on and let&apos;s turn your vision into a
-              practical technology solution.
+              Have an idea, a challenge, or a project in mind?
+              Tell us what you&apos;re working on and let&apos;s
+              turn your vision into a practical technology
+              solution.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 min-[400px]:flex-row">
@@ -213,6 +242,7 @@ export default function ContactPage() {
             </div>
 
           </div>
+
         </div>
       </section>
 
@@ -242,15 +272,17 @@ export default function ContactPage() {
             </h2>
 
             <p className="mt-5 text-sm leading-7 text-gray-600 lg:text-base lg:leading-8">
-              Whether you need a new application, cloud solution, ERP system,
-              digital marketing support, AI implementation, or simply want to
-              discuss an idea, our team is ready to listen.
+              Whether you need a new application, cloud
+              solution, ERP system, digital marketing support,
+              AI implementation, or simply want to discuss an
+              idea, our team is ready to listen.
             </p>
 
             <p className="mt-4 text-sm leading-7 text-gray-600 lg:text-base lg:leading-8">
-              Share a little about what you&apos;re trying to achieve. We&apos;ll
-              understand your requirements, discuss the right approach, and
-              help you identify the next step.
+              Share a little about what you&apos;re trying to
+              achieve. We&apos;ll understand your requirements,
+              discuss the right approach, and help you identify
+              the next step.
             </p>
 
             {/* Reasons */}
@@ -334,7 +366,7 @@ export default function ContactPage() {
       </section>
 
       {/* =====================================================
-          FORM SECTION
+          CONTACT FORM
       ===================================================== */}
 
       <section
@@ -361,8 +393,8 @@ export default function ContactPage() {
             </h2>
 
             <p className="mt-4 text-sm leading-7 text-gray-600">
-              Fill out the form below and our team will get in touch with you
-              to discuss your requirements.
+              Fill out the form below and our team will get in
+              touch with you to discuss your requirements.
             </p>
 
           </div>
@@ -375,27 +407,52 @@ export default function ContactPage() {
               className="space-y-5"
             >
 
+              {/* =================================================
+                  HONEYPOT SPAM PROTECTION
+              ================================================= */}
+
+              <input
+                type="checkbox"
+                name="botcheck"
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
+              {/* =================================================
+                  SUCCESS MESSAGE
+              ================================================= */}
+
               {status === "success" && (
                 <div className="flex items-start gap-3 rounded-xl border border-green-200 bg-green-50 px-4 py-3.5 text-sm text-green-700">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
+
                   <p>
-                    Thanks! Your enquiry has been sent. Our team will get
-                    back to you shortly.
+                    Thanks! Your enquiry has been sent.
+                    Our team will get back to you shortly.
                   </p>
                 </div>
               )}
+
+              {/* =================================================
+                  ERROR MESSAGE
+              ================================================= */}
 
               {status === "error" && (
                 <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3.5 text-sm text-red-600">
                   <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+
                   <p>
-                    We couldn&apos;t send your enquiry right now. Please try
-                    again or contact us directly.
+                    We couldn&apos;t send your enquiry right now.
+                    Please try again or contact us directly.
                   </p>
                 </div>
               )}
 
-              {/* NAME + EMAIL */}
+              {/* =================================================
+                  NAME + EMAIL
+              ================================================= */}
+
               <div className="grid gap-5 sm:grid-cols-2">
 
                 <div>
@@ -412,6 +469,7 @@ export default function ContactPage() {
                     name="name"
                     type="text"
                     required
+                    maxLength={100}
                     placeholder="Enter your name"
                     className="h-12 w-full rounded-xl border border-gray-200 bg-[#f7f7f5] px-4 text-sm text-gray-900 outline-none placeholder:text-gray-400 transition focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-100"
                   />
@@ -432,6 +490,7 @@ export default function ContactPage() {
                     name="email"
                     type="email"
                     required
+                    maxLength={254}
                     placeholder="you@example.com"
                     className="h-12 w-full rounded-xl border border-gray-200 bg-[#f7f7f5] px-4 text-sm text-gray-900 outline-none placeholder:text-gray-400 transition focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-100"
                   />
@@ -440,7 +499,10 @@ export default function ContactPage() {
 
               </div>
 
-              {/* PHONE + SERVICE */}
+              {/* =================================================
+                  PHONE + SERVICE
+              ================================================= */}
+
               <div className="grid gap-5 sm:grid-cols-2">
 
                 <div>
@@ -456,6 +518,7 @@ export default function ContactPage() {
                     id="phone"
                     name="phone"
                     type="tel"
+                    maxLength={30}
                     placeholder="Enter your phone number"
                     className="h-12 w-full rounded-xl border border-gray-200 bg-[#f7f7f5] px-4 text-sm text-gray-900 outline-none placeholder:text-gray-400 transition focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-100"
                   />
@@ -536,7 +599,10 @@ export default function ContactPage() {
 
               </div>
 
-              {/* COMPANY */}
+              {/* =================================================
+                  COMPANY
+              ================================================= */}
+
               <div>
 
                 <label
@@ -544,6 +610,7 @@ export default function ContactPage() {
                   className="mb-2 block text-xs font-semibold text-gray-700"
                 >
                   Company Name
+
                   <span className="ml-1 text-gray-400">
                     (Optional)
                   </span>
@@ -553,13 +620,17 @@ export default function ContactPage() {
                   id="company"
                   name="company"
                   type="text"
+                  maxLength={120}
                   placeholder="Your company name"
                   className="h-12 w-full rounded-xl border border-gray-200 bg-[#f7f7f5] px-4 text-sm text-gray-900 outline-none placeholder:text-gray-400 transition focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-100"
                 />
 
               </div>
 
-              {/* MESSAGE */}
+              {/* =================================================
+                  MESSAGE
+              ================================================= */}
+
               <div>
 
                 <label
@@ -573,6 +644,7 @@ export default function ContactPage() {
                   id="message"
                   name="message"
                   required
+                  maxLength={4000}
                   rows={6}
                   placeholder="Tell us about your idea, requirements, challenges, timeline, or anything else that would help us understand your project..."
                   className="w-full resize-none rounded-xl border border-gray-200 bg-[#f7f7f5] px-4 py-3 text-sm leading-6 text-gray-900 outline-none placeholder:text-gray-400 transition focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-100"
@@ -580,14 +652,18 @@ export default function ContactPage() {
 
               </div>
 
-              {/* SUBMIT */}
+              {/* =================================================
+                  SUBMIT
+              ================================================= */}
+
               <div className="pt-2">
 
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-red-600/10 transition duration-300 hover:bg-red-700 disabled:opacity-70 sm:w-auto sm:min-w-[200px]"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-red-600/10 transition duration-300 hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:min-w-[200px]"
                 >
+
                   {status === "loading" ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
@@ -599,13 +675,14 @@ export default function ContactPage() {
                       <Send className="h-4 w-4" />
                     </>
                   )}
+
                 </button>
 
               </div>
 
               <p className="text-[10px] leading-5 text-gray-400 sm:text-xs">
-                By submitting this form, you agree that our team may contact
-                you regarding your enquiry.
+                By submitting this form, you agree that our team
+                may contact you regarding your enquiry.
               </p>
 
             </form>
@@ -643,9 +720,10 @@ export default function ContactPage() {
               </h2>
 
               <p className="mt-5 text-sm leading-7 text-gray-600 lg:text-base lg:leading-8">
-                Our office is located in E-20, Upper Ground Floor, Jawahar Park, Laxmi Nagar, Delhi - 110092. If
-                you&apos;re nearby, we&apos;d be happy to meet and discuss your
-                project in person.
+                Our office is located in E-20, Upper Ground
+                Floor, Jawahar Park, Laxmi Nagar, Delhi -
+                110092. If you&apos;re nearby, we&apos;d be happy
+                to meet and discuss your project in person.
               </p>
 
               <div className="mt-7 flex items-start gap-3">
@@ -661,9 +739,8 @@ export default function ContactPage() {
                   </p>
 
                   <p className="mt-1 text-xs leading-6 text-gray-500 sm:text-sm">
-                    E-20, Upper Ground Floor, Jawahar Park, Laxmi Nagar, Delhi - 110092
-                    <br />
-                    
+                    E-20, Upper Ground Floor, Jawahar Park,
+                    Laxmi Nagar, Delhi - 110092
                   </p>
 
                 </div>
@@ -682,10 +759,8 @@ export default function ContactPage() {
                 className="absolute inset-0 h-full w-full object-cover opacity-45"
               />
 
-              {/* Light overlay */}
               <div className="absolute inset-0 bg-white/40" />
 
-              {/* Subtle grid */}
               <div
                 aria-hidden="true"
                 className="absolute inset-0 opacity-25"
@@ -713,10 +788,6 @@ export default function ContactPage() {
 
                   <p className="text-xs font-bold text-gray-900">
                     DZ MARKETING SOLUTIONS
-                  </p>
-
-                  <p className="mt-0.5 text-[10px] text-gray-500">
-                    
                   </p>
 
                 </div>
@@ -758,8 +829,9 @@ export default function ContactPage() {
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600">
-              Your next big idea could be the beginning of something amazing.
-              Talk to DZ MARKETING SOLUTIONS and let&apos;s build it together.
+              Your next big idea could be the beginning of
+              something amazing. Talk to DZ MARKETING SOLUTIONS
+              and let&apos;s build it together.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 min-[400px]:flex-row">
@@ -790,5 +862,3 @@ export default function ContactPage() {
     </main>
   );
 }
-
-
