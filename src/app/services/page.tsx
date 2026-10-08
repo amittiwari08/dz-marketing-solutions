@@ -217,9 +217,11 @@ export default function ServicesPage() {
                       Get In Touch
                     </p>
 
-                    <h3 className="text-xl font-bold leading-tight text-[#111216]">
-                      {service.title}
-                    </h3>
+                   <h3 className="text-xl font-bold leading-tight text-[#111216]">
+  {service.title === "Global Travel Service"
+    ? "Global Travel Services"
+    : service.title}
+</h3>
 
                     <p className="mt-3 line-clamp-3 text-sm leading-6 text-gray-600">
                       {service.shortDescription}
