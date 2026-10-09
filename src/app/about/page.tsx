@@ -1,6 +1,7 @@
-﻿/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/no-unescaped-entities */
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle2,
@@ -245,9 +246,13 @@ export default function AboutUsPage() {
 
           <div className="order-1 lg:order-2">
             <div className="relative mx-auto w-full max-w-[560px] overflow-hidden rounded-[24px] border border-gray-200 bg-white p-2 shadow-xl shadow-gray-200/60 sm:rounded-[30px] sm:p-3">
-              <img
-                src="/images/service-06.png"
+              <Image
+                src="/images/service-06.webp"
                 alt="DZ MARKETING SOLUTIONS technology team"
+                width={1200}
+                height={900}
+                priority
+                sizes="(max-width: 1023px) calc(100vw - 2.5rem), 50vw"
                 className="h-[280px] w-full rounded-[18px] object-cover sm:h-[360px] sm:rounded-[22px] md:h-[400px] lg:h-[430px]"
               />
             </div>
@@ -259,10 +264,12 @@ export default function AboutUsPage() {
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
           <div className="order-2 lg:order-1">
             <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-[#f7f7f5] p-2 shadow-sm sm:rounded-[28px] sm:p-3">
-              <img
-                src="/images/service-07.png"
+              <Image
+                src="/images/service-07.webp"
                 alt="DZ MARKETING SOLUTIONS team working with ERP technology"
-                loading="lazy"
+                width={1200}
+                height={900}
+                sizes="(max-width: 1023px) calc(100vw - 2.5rem), 50vw"
                 className="h-[280px] w-full rounded-[18px] object-cover sm:h-[360px] sm:rounded-[22px] lg:h-[430px]"
               />
             </div>
@@ -439,10 +446,12 @@ export default function AboutUsPage() {
 
           <div>
             <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-white p-2 shadow-lg sm:rounded-[30px] sm:p-3">
-              <img
-                src="/images/service-05.png"
+              <Image
+                src="/images/service-05.webp"
                 alt="Technology and digital business solutions"
-                loading="lazy"
+                width={1200}
+                height={900}
+                sizes="(max-width: 1023px) calc(100vw - 2.5rem), 50vw"
                 className="h-[340px] w-full rounded-[18px] object-cover sm:h-[470px] sm:rounded-[24px] lg:h-[560px]"
               />
             </div>
@@ -454,10 +463,12 @@ export default function AboutUsPage() {
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
           <div className="order-2 lg:order-1">
             <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-[#f7f7f5] p-2 shadow-sm sm:rounded-[30px] sm:p-3">
-              <img
-                src="/images/service-03.png"
+              <Image
+                src="/images/service-03.webp"
                 alt="DZ MARKETING SOLUTIONS technology team"
-                loading="lazy"
+                width={1200}
+                height={900}
+                sizes="(max-width: 1023px) calc(100vw - 2.5rem), 50vw"
                 className="h-[320px] w-full rounded-[18px] object-cover sm:h-[450px] sm:rounded-[24px] lg:h-[520px]"
               />
             </div>

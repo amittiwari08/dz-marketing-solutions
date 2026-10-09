@@ -1,4 +1,5 @@
-﻿import Link from "next/link";
+import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
     ArrowLeft,
@@ -219,10 +220,13 @@ export default function ServiceDetailPage({
       ====================================================== */}
             <section className="relative overflow-hidden bg-[#101114]">
                 <div className="absolute inset-0">
-                    <img
+                    <Image
                         src={image}
                         alt={service.title}
-                        className="h-full w-full object-cover opacity-35"
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover opacity-35"
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-r from-[#101114] via-[#101114]/90 to-[#101114]/55" />
@@ -442,11 +446,13 @@ export default function ServiceDetailPage({
                             </div>
                         </div>
 
-                        <div className="relative overflow-hidden rounded-[32px] bg-[#111216]">
-                            <img
+                        <div className="relative aspect-[4/3] overflow-hidden rounded-[32px] bg-[#111216]">
+                            <Image
                                 src={image}
                                 alt={service.title}
-                                className="aspect-[4/3] h-full w-full object-cover"
+                                fill
+                                sizes="(max-width: 768px) calc(100vw - 3rem), 1200px"
+                                className="object-cover"
                             />
 
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

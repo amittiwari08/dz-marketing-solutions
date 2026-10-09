@@ -70,7 +70,7 @@ export const servicesData: ServiceDetail[] = [
     },
     supportingImages: [
       {
-        url: "/images/service-it-management-supplied.png",
+        url: "/images/service-it-management-supplied.webp",
         alt: "Enterprise infrastructure monitoring and security administration",
       },
       {
@@ -212,16 +212,16 @@ export const servicesData: ServiceDetail[] = [
     heroSubtitle:
       "Align your IT investments with long-term business goals through independent technology audits, platform strategy, and digital transformation roadmaps.",
     mainImage: {
-      url: "/images/about-team.jpg",
+      url: "/images/about-team.webp",
       alt: "IT Consulting strategic business meeting and architecture planning",
     },
     heroImage: {
-      url: "/images/about-team.jpg",
+      url: "/images/about-team.webp",
       alt: "Senior technology consultant guiding executive business planning",
     },
     supportingImages: [
       {
-        url: "/images/hero-intro.jpg",
+        url: "/images/hero-intro.webp",
         alt: "Digital transformation strategy session and interactive dashboard",
       },
       {
@@ -372,11 +372,11 @@ export const servicesData: ServiceDetail[] = [
     },
     supportingImages: [
       {
-        url: "/images/hero-bg-cyber.jpg",
+        url: "/images/hero-bg-cyber.webp",
         alt: "Secure cloud microservices network and data connectivity visual",
       },
       {
-        url: "/images/global-network-map.jpg",
+        url: "/images/global-network-map.webp",
         alt: "Global cloud deployment network and multi-region application node map",
       },
     ],
@@ -527,7 +527,7 @@ export const servicesData: ServiceDetail[] = [
         alt: "Advanced application logic and artificial intelligence integration visual",
       },
       {
-        url: "/images/hero-bg-robot.jpg",
+        url: "/images/hero-bg-robot.webp",
         alt: "Futuristic software automation and interactive application UI screen",
       },
     ],
@@ -674,7 +674,7 @@ export const servicesData: ServiceDetail[] = [
     },
     supportingImages: [
       {
-        url: "/images/global-network-map.jpg",
+        url: "/images/global-network-map.webp",
         alt: "Global supply chain and enterprise resource tracking network map",
       },
       {

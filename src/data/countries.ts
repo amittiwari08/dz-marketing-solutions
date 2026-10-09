@@ -2,7 +2,7 @@ export type Country = {
   name: string;
   code: string;
   label: string;
-  // x/y are percentage positions calibrated to public/images/global-network-map.jpg.
+  // x/y are percentage positions calibrated to public/images/global-network-map.webp.
   // If that image is ever replaced, these will need recalibrating.
   x: number;
   y: number;

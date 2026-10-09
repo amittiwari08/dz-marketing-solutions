@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 
 import { FormEvent, ReactNode, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   AlertTriangle,
   ArrowRight,
@@ -182,7 +183,7 @@ export default function ContactPage() {
           aria-hidden="true"
           className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/images/hero-intro.png')",
+            backgroundImage: "url('/images/hero-intro.webp')",
           }}
         />
 
@@ -752,11 +753,12 @@ export default function ContactPage() {
             {/* MAP */}
             <div className="relative min-h-[300px] overflow-hidden rounded-[22px] border border-gray-200 bg-[#f7f7f5] shadow-sm sm:min-h-[360px] sm:rounded-[28px]">
 
-              <img
-                src="/images/global-network-map.png"
+              <Image
+                src="/images/global-network-map.webp"
                 alt="Technology network map"
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover opacity-45"
+                fill
+                sizes="(max-width: 639px) calc(100vw - 2.5rem), 50vw"
+                className="object-cover opacity-45"
               />
 
               <div className="absolute inset-0 bg-white/40" />

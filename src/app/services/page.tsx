@@ -1,28 +1,31 @@
 ﻿import Link from "next/link";
+
+import Image from "next/image";
+
 import {
   ArrowRight,
-  CheckCircle2,
   Sparkles,
   ShieldCheck,
   Users,
   Zap,
 } from "lucide-react";
 
-import { services } from "@/data/services";
-import { slugify } from "@/lib/slugify";
+import {services} from "@/data/services";
+
+import {slugify} from "@/lib/slugify";
 
 const serviceImages = [
-  "/images/service-01.png",
-  "/images/service-02.png",
-  "/images/service-03.png",
-  "/images/service-04.png",
-  "/images/service-05.png",
-  "/images/service-06.png",
-  "/images/service-07.png",
-  "/images/service-08.png",
-  "/images/service-09.png",
-  "/images/service-10.png",
-  "/images/service-11.png",
+  "/images/service-01.webp",
+  "/images/service-02.webp",
+  "/images/service-03.webp",
+  "/images/service-04.webp",
+  "/images/service-05.webp",
+  "/images/service-06.webp",
+  "/images/service-07.webp",
+  "/images/service-08.webp",
+  "/images/service-09.webp",
+  "/images/service-10.webp",
+  "/images/service-11.webp",
 ];
 
 const whyDZ = [
@@ -60,15 +63,16 @@ export default function ServicesPage() {
       ====================================================== */}
       <section className="relative overflow-hidden bg-[#101114]">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/about-team-enhanced.png"
             alt="DZ MARKETING SOLUTIONS team"
-            className="h-full w-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
-
           <div className="absolute inset-0 bg-black/65" />
         </div>
-
         <div className="relative mx-auto flex min-h-[520px] max-w-7xl items-center px-6 py-24 lg:px-8">
           <div className="max-w-3xl">
             {/* Badge */}
@@ -77,10 +81,8 @@ export default function ServicesPage() {
                 size={16}
                 className="text-[#ff334b]"
               />
-
               Digital Solutions That Move Business Forward
             </div>
-
             {/* Heading */}
             <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
               Powering Your{" "}
@@ -88,7 +90,6 @@ export default function ServicesPage() {
                 Digital Future
               </span>
             </h1>
-
             {/* Description */}
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
               We combine technology, creativity, and business
@@ -96,7 +97,6 @@ export default function ServicesPage() {
               ambitious businesses grow, operate smarter, and
               stay ahead.
             </p>
-
             {/* Buttons */}
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -106,7 +106,6 @@ export default function ServicesPage() {
                 Explore Our Services
                 <ArrowRight size={17} />
               </Link>
-
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15"
@@ -117,7 +116,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
       {/* =====================================================
           SERVICES
       ====================================================== */}
@@ -131,22 +129,19 @@ export default function ServicesPage() {
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#ff334b]">
               What We Do
             </p>
-
             <h2 className="text-3xl font-bold tracking-tight text-[#111216] sm:text-4xl lg:text-5xl">
               Services Built Around{" "}
               <span className="text-[#ff334b]">
                 Your Goals
               </span>
             </h2>
-
             <p className="mt-5 text-base leading-7 text-gray-600 sm:text-lg">
               From technology consulting to digital marketing,
               application development, AI, design, and business
-              solutions â€” we provide everything you need to build
+              solutions — we provide everything you need to build
               and grow digitally.
             </p>
           </div>
-
           {/* =================================================
               SERVICE GRID
           ================================================== */}
@@ -157,14 +152,12 @@ export default function ServicesPage() {
                * therefore we generate it from the title.
                */
               const slug = slugify(service.title);
-
               /*
                * Map service number to local image.
                */
               const image =
                 serviceImages[index] ||
-                "/images/service-01.png";
-
+                "/images/service-01.webp";
               return (
                 <article
                   key={service.id}
@@ -173,7 +166,6 @@ export default function ServicesPage() {
                   {/* =================================================
                       IMAGE + VIEW MORE
                   ================================================== */}
-
                   {/*
                    * IMPORTANT:
                    * This outer wrapper MUST NOT have overflow-hidden.
@@ -182,16 +174,16 @@ export default function ServicesPage() {
                   <div className="relative aspect-[4/3] rounded-[22px]">
                     {/* Image wrapper */}
                     <div className="relative h-full w-full overflow-hidden rounded-[22px] bg-gray-100">
-                      <img
+                      <Image
                         src={image}
                         alt={service.title}
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover transition duration-500 group-hover:scale-105"
                       />
-
                       {/* Image overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                     </div>
-
                     {/* =================================================
                         VIEW MORE BUTTON
                     ================================================== */}
@@ -201,14 +193,12 @@ export default function ServicesPage() {
                       className="absolute bottom-0 left-1/2 z-30 flex -translate-x-1/2 translate-y-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-[#ff334b] px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#e52c43] hover:shadow-xl"
                     >
                       View More
-
                       <ArrowRight
                         size={16}
                         className="transition-transform duration-300 group-hover:translate-x-1"
                       />
                     </Link>
                   </div>
-
                   {/* =================================================
                       CARD CONTENT
                   ================================================== */}
@@ -216,13 +206,11 @@ export default function ServicesPage() {
                     <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#ff334b]">
                       Get In Touch
                     </p>
-
-                   <h3 className="text-xl font-bold leading-tight text-[#111216]">
-  {service.title === "Global Travel Service"
-    ? "Global Travel Services"
-    : service.title}
-</h3>
-
+                    <h3 className="text-xl font-bold leading-tight text-[#111216]">
+                      {service.title === "Global Travel Service"
+                        ? "Global Travel Services"
+                        : service.title}
+                    </h3>
                     <p className="mt-3 line-clamp-3 text-sm leading-6 text-gray-600">
                       {service.shortDescription}
                     </p>
@@ -233,7 +221,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
       {/* =====================================================
           WHY DZ MARKETING SOLUTIONS
       ====================================================== */}
@@ -245,14 +232,12 @@ export default function ServicesPage() {
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#ff334b]">
                 Why DZ MARKETING SOLUTIONS
               </p>
-
               <h2 className="text-3xl font-bold leading-tight text-[#111216] sm:text-4xl">
                 Technology That Works{" "}
                 <span className="text-[#ff334b]">
                   For Your Business
                 </span>
               </h2>
-
               <p className="mt-6 max-w-xl leading-8 text-gray-600">
                 At DZ MARKETING SOLUTIONS, we believe great technology
                 is not just about features. It is about creating
@@ -260,22 +245,18 @@ export default function ServicesPage() {
                 improving customer experiences, and helping
                 businesses grow with confidence.
               </p>
-
               <Link
                 href="/contact"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#111216] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#ff334b]"
               >
                 Talk To Our Team
-
                 <ArrowRight size={17} />
               </Link>
             </div>
-
             {/* Feature cards */}
             <div className="grid gap-5 sm:grid-cols-2">
               {whyDZ.map((item) => {
                 const Icon = item.icon;
-
                 return (
                   <div
                     key={item.title}
@@ -284,11 +265,9 @@ export default function ServicesPage() {
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#ff334b]/10 text-[#ff334b]">
                       <Icon size={22} />
                     </div>
-
                     <h3 className="mt-5 text-lg font-bold text-[#111216]">
                       {item.title}
                     </h3>
-
                     <p className="mt-3 text-sm leading-6 text-gray-600">
                       {item.description}
                     </p>
@@ -299,7 +278,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
       {/* =====================================================
           FINAL CTA
       ====================================================== */}
@@ -308,31 +286,26 @@ export default function ServicesPage() {
           <div className="relative px-7 py-14 sm:px-12 sm:py-16 lg:px-16">
             {/* Decorative glow */}
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#ff334b]/20 blur-3xl" />
-
             <div className="relative max-w-3xl">
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#ff334b]">
                 Let&apos;s Build Something Great
               </p>
-
               <h2 className="text-3xl font-bold text-white sm:text-4xl">
                 Have An Idea?{" "}
                 <span className="text-[#ff334b]">
                   Let&apos;s Make It Real.
                 </span>
               </h2>
-
               <p className="mt-5 max-w-2xl leading-7 text-white/65">
                 Tell us what you are trying to achieve and our
                 team will help you turn your idea into a practical
                 digital solution.
               </p>
-
               <Link
                 href="/contact"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#ff334b] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#e82c43]"
               >
                 Start A Project
-
                 <ArrowRight size={17} />
               </Link>
             </div>
@@ -342,4 +315,3 @@ export default function ServicesPage() {
     </main>
   );
 }
-
